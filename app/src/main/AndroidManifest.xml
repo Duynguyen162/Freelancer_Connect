@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freelancer_connect">
         <activity
+            android:name=".RegisterProviderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterCustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

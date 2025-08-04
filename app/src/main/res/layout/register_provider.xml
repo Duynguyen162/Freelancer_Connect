@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/register_provider"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/ic_logo"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_logo"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Logo" />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/register_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#222222"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nhập tên -->
+        <EditText
+            android:id="@+id/register_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Nhập tên"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="4dp" />
+
+        <!-- Ngày sinh và icon -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/register_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Ngày sinh"
+                android:focusable="false"
+                android:padding="12dp"
+                android:background="@android:color/transparent" />
+
+            <ImageView
+                android:id="@+id/register_birthday_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_logo"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"/>
+        </RelativeLayout>
+
+        <!-- Giới tính -->
+        <EditText
+            android:id="@+id/register_gender"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Giới tính"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp" />
+
+        <!-- Địa chỉ -->
+        <EditText
+            android:id="@+id/register_address"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Địa chỉ"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Số điện thoại -->
+        <EditText
+            android:id="@+id/register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Số Điện Thoại"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp" />
+
+        <!-- Ảnh CCCD mặt trước -->
+        <TextView
+            android:id="@+id/register_idcard_front"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_edittext"
+            android:text="Ảnh căn cước công dân mặt trước"
+            android:gravity="center"
+            android:textColor="#aaa"
+            android:textSize="16sp"
+            android:layout_marginTop="14dp" />
+
+        <!-- Ảnh CCCD mặt sau -->
+        <TextView
+            android:id="@+id/register_idcard_back"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_edittext"
+            android:text="Ảnh căn cước công dân mặt sau"
+            android:gravity="center"
+            android:textColor="#aaa"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Ảnh bằng cấp -->
+        <TextView
+            android:id="@+id/register_certificate"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_edittext"
+            android:text="Ảnh bằng cấp"
+            android:gravity="center"
+            android:textColor="#aaa"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Nút gửi -->
+        <Button
+            android:id="@+id/register_btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Gửi"
+            android:textColor="#fff"
+            android:background="@drawable/bg_btn"/>
+    </LinearLayout>
+</ScrollView>
