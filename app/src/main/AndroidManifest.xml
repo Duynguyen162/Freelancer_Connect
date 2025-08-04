@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freelancer_connect">
         <activity
+            android:name=".HomeAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterProviderActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeAdminActivity">
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9FBFC"
+        >
+
+        <!-- Thanh header chào mừng -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#3379ad">
+            <TextView
+                android:id="@+id/tvHelloAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chào mừng Admin"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"/>
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_logo"/>
+        </RelativeLayout>
+
+        <!-- Các block chức năng -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="3"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <!-- Box 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quản lý tài khoản"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Box 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quản lí thông báo"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Box 3: Xác thực đăng kí làm dịch vụ -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xác thực đăng kí làm dịch vụ"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Box 4: Danh mục các dịch vụ -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục các dịch vụ"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Box 5: Thống kê -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thống Kê"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Box 6: Phân quyền -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_box"
+                android:layout_margin="8dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phân quyền"
+                    android:textSize="16sp"
+                    android:textColor="#222222"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
