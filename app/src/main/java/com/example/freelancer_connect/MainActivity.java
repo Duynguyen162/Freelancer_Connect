@@ -12,11 +12,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btn_login;
+    TextView tv_register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button btn_login;
-        TextView tv_register;
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.login_layout);
