@@ -6,93 +6,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeAdminActivity">
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F9FBFC"
-        >
+        android:orientation="vertical">
 
         <!-- Thanh header chào mừng -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="108dp"
             android:background="#3379ad">
+
             <TextView
                 android:id="@+id/tvHelloAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chào mừng Admin"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="160dp"
+                android:text="Chào mừng Admin"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_logo"/>
-        </RelativeLayout>
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/ic_logo" />
+        </LinearLayout>
 
         <!-- Các block chức năng -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:padding="16dp"
-            android:layout_marginTop="12dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
+            android:columnCount="2"
+            android:padding="16dp"
+            android:rowCount="3">
 
             <!-- Box 1 -->
             <LinearLayout
+                android:id="@+id/account_management"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
+                android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Quản lý tài khoản"
-                    android:textSize="16sp"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Box 2 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="120dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
+                android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Quản lí thông báo"
-                    android:textSize="16sp"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Box 3: Xác thực đăng kí làm dịch vụ -->
@@ -100,22 +109,24 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Xác thực đăng kí làm dịch vụ"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:textSize="16sp"
+                    android:text="Xác thực đăng kí làm dịch vụ"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Box 4: Danh mục các dịch vụ -->
@@ -123,21 +134,24 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
                     android:text="Danh mục các dịch vụ"
-                    android:textSize="16sp"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Box 5: Thống kê -->
@@ -145,21 +159,23 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Thống Kê"
-                    android:textSize="16sp"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Box 6: Phân quyền -->
@@ -167,21 +183,23 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:background="@drawable/bg_box"
                 android:layout_margin="8dp"
-                android:gravity="center">
+                android:background="@drawable/bg_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo"/>
+                    android:src="@drawable/ic_logo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Phân quyền"
-                    android:textSize="16sp"
                     android:textColor="#222222"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
         </GridLayout>
     </LinearLayout>
