@@ -3,9 +3,14 @@ package com.example.freelancer_connect.home_page;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +24,7 @@ import com.example.freelancer_connect.provider.ProviderDetailInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements MenuProvider {
 
     private List<Provider> listProvider;
     private RecyclerView homeRecyclerView;
@@ -43,6 +48,8 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+
+
     private List<Provider> getListProvider() {
         List<Provider> list = new ArrayList();
         list.add(new Provider(R.drawable.img_user, "Gia sư Toán", "Chi phí: 700.000đ", "Đã được thuê: 500", "5"));
@@ -58,5 +65,15 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(getContext(), ProviderDetailInfo.class);
         intent.putExtra("EXTRA_DATA_KEY", provider.getPrice()); // Truyền dữ liệu đi kèm nếu cần
         startActivity(intent);
+    }
+
+    @Override
+    public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+        return false;
     }
 }
