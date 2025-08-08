@@ -12,6 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.freelancer_connect.databinding.ActivityCustomerBinding;
+import com.example.freelancer_connect.home_page.HomeFragment;
+import com.example.freelancer_connect.notify.NotifyFragment;
+import com.example.freelancer_connect.user.UserFragment;
 
 public class CustomerActivity extends AppCompatActivity {
     ActivityCustomerBinding binding;

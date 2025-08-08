@@ -7,7 +7,7 @@
     tools:context=".UserFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
+        android:id="@+id/image_view_provider"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_gravity="center"
@@ -50,8 +50,7 @@
                 android:background="@drawable/edittext_border"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="8dp"
-                android:text="Name" />
+                android:padding="8dp" />
         </TableRow>
 
         <TableRow
@@ -73,8 +72,7 @@
                 android:background="@drawable/edittext_border"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="8dp"
-                android:text="Name" />
+                android:padding="8dp" />
 
         </TableRow>
 
@@ -97,8 +95,7 @@
                 android:background="@drawable/edittext_border"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="8dp"
-                android:text="Name" />
+                android:padding="8dp" />
         </TableRow>
 
         <TableRow
@@ -120,8 +117,7 @@
                 android:background="@drawable/edittext_border"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="8dp"
-                android:text="Name" />
+                android:padding="8dp" />
         </TableRow>
 
         <TableRow
@@ -143,8 +139,7 @@
                 android:background="@drawable/edittext_border"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="8dp"
-                android:text="Name" />
+                android:padding="8dp" />
 
         </TableRow>
 

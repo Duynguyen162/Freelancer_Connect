@@ -5,4 +5,5 @@
     <color name="button_color">#0325FF</color>
     <color name="service_item_color">#ADD6F7</color>
     <color name="border_color">#0325FF</color>
+    <color name="primary_color">#286291</color>
 </resources>
