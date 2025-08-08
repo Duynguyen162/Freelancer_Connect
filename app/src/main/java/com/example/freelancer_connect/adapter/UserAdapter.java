@@ -17,13 +17,20 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private List<User> userList;
+    private OnItemClickListener listener;
 
-    // Constructor nhận dữ liệu danh sách
+    public interface OnItemClickListener {
+        void onItemClick(User user);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
     public UserAdapter(List<User> userList) {
         this.userList = userList;
     }
 
-    // ViewHolder lưu tham chiếu đến View thành phần trong item
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         ImageView imageAvatar;
         TextView textName, textCode;
@@ -36,25 +43,27 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
     }
 
-    // Tạo ViewHolder mới từ layout item_user.xml
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_user, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(view);
     }
 
-    // Gán dữ liệu vào ViewHolder cho vị trí position
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = userList.get(position);
         holder.textName.setText(user.getName());
         holder.textCode.setText("Mã: " + user.getCode());
         holder.imageAvatar.setImageResource(user.getAvatarResId());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(user);
+            }
+        });
     }
 
-    // Trả về số lượng item trong danh sách
     @Override
     public int getItemCount() {
         return userList.size();
