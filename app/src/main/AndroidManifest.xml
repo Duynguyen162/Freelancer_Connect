@@ -13,10 +13,8 @@
         android:theme="@style/Theme.Freelancer_connect">
         <activity
             android:name=".provider.ProviderDetailInfo"
-            android:exported="false" />
-        <activity
-            android:name=".provider.ProviderActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.YourApp.NoActionBar"/>
         <activity
             android:name=".CustomerActivity"
             android:exported="true">

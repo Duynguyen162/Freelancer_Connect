@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,20 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder>{
+public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder> implements Filterable{
     private Context mContext;
     private List<Provider> mListProvider;
+    private List<Provider> mListProviderOld;
 
-    public ProviderAdapter(Context mContext) {
+    public ProviderAdapter(Context mContext, List<Provider> mListProvider) {
         this.mContext = mContext;
+        this.mListProvider = mListProvider;
+        this.mListProviderOld = mListProvider;
     }
 
-    public void setData(List<Provider> list) {
-        mListProvider = list;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -71,6 +73,39 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         intent.putExtras(bundle);
         mContext.startActivity(intent);
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strSearch = constraint.toString();
+                if (strSearch.isEmpty()) {
+                    mListProvider = mListProviderOld;
+                } else {
+                    List<Provider> list= new ArrayList<>();
+                    for (Provider provider : mListProviderOld) {
+                        if (provider.getTilte().toLowerCase().contains(strSearch.toLowerCase())) {
+                            list.add(provider);
+                        }
+                    }
+                    mListProvider = list;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mListProvider;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                mListProvider = (List<Provider>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 
     public class ProviderViewHolder extends RecyclerView.ViewHolder {
         private CardView providerCardView;
