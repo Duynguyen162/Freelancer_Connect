@@ -7,7 +7,7 @@
     tools:context=".UserFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/image_view_provider"
+        android:id="@+id/user_image_view"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_gravity="center"
@@ -19,33 +19,34 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/profile_name"
+        android:id="@+id/text_view_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_below="@+id/image_view_provider"
-        android:text="Nguyễn Văn Mão"
-        android:textSize="18dp"
-        android:textStyle="bold"
+        android:layout_below="@+id/user_image_view"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="4dp"/>
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:text="Nguyễn Văn Mão"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 
     <LinearLayout
         android:id="@+id/linear_layout_login_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_name"
+        android:layout_below="@+id/text_view_user_name"
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/text_view_login_name"
+            android:id="@+id/text_view_user_login_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tên đăng nhập:" />
 
         <EditText
-            android:id="@+id/edit_text_login_name"
+            android:id="@+id/edit_text_user_login_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -64,13 +65,13 @@
         android:layout_below="@+id/linear_layout_login_name"
         android:padding="4dp">
         <TextView
-            android:id="@+id/text_view_cccd"
+            android:id="@+id/text_view_user_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CCCD:" />
 
         <EditText
-            android:id="@+id/edit_text_cccd"
+            android:id="@+id/edit_text_user_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
@@ -89,13 +90,13 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/text_view_email"
+            android:id="@+id/text_view_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email:" />
 
         <EditText
-            android:id="@+id/edit_text_email"
+            android:id="@+id/edit_text_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
@@ -115,13 +116,13 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/text_view_phone"
+            android:id="@+id/text_view_user_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Số điện thoại:" />
 
         <EditText
-            android:id="@+id/edit_text_phone"
+            android:id="@+id/edit_text_user_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
@@ -141,13 +142,13 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/text_view_dob"
+            android:id="@+id/text_view_user_dob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ngày sinh:" />
 
         <EditText
-            android:id="@+id/edit_text_dob"
+            android:id="@+id/edit_text_user_dob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="66dp"
@@ -167,21 +168,21 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/text_view_gender"
+            android:id="@+id/text_view_user_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Giới tính" />
 
         <RadioGroup
-            android:id="@+id/radio_group_gender"
+            android:id="@+id/radio_group_user_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/user_radio_button_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
@@ -189,7 +190,7 @@
                 android:text="Nam" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/user_radio_button_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -199,7 +200,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_layout_log_out"
+        android:id="@+id/user_button_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_layout_gender"
@@ -214,16 +215,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:text="Đăng xuất"
             android:textColor="@color/black"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
+            android:textSize="16dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_layout_manage_service"
+        android:id="@+id/user_btn_manage_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_layout_gender"
@@ -248,7 +249,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_layout_update_profile"
+        android:id="@+id/user_button_edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

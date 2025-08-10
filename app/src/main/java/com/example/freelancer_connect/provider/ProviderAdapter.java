@@ -117,7 +117,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         public ProviderViewHolder(@NonNull View itemView) {
             super(itemView);
             providerCardView = itemView.findViewById(R.id.item_provider_cardview);
-            providerImage = itemView.findViewById(R.id.image_view_provider);
+            providerImage = itemView.findViewById(R.id.user_image_view);
             providerTitle = itemView.findViewById(R.id.text_view_provider_title);
             providerPrice = itemView.findViewById(R.id.text_view_provider_price);
             providerNumJobDone = itemView.findViewById(R.id.text_view_provider_num_job_done);
