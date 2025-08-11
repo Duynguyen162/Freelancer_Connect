@@ -12,11 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freelancer_connect">
         <activity
+            android:name=".NotificationManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeAdminActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".RegisterProviderActivity"
             android:exported="false" />
@@ -34,9 +37,10 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

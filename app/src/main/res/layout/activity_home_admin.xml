@@ -81,6 +81,7 @@
 
             <!-- Box 2 -->
             <LinearLayout
+                android:id="@+id/notification_management"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_rowWeight="1"
@@ -106,6 +107,7 @@
 
             <!-- Box 3: Xác thực đăng kí làm dịch vụ -->
             <LinearLayout
+                android:id="@+id/authenticate_registration"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
@@ -131,6 +133,7 @@
 
             <!-- Box 4: Danh mục các dịch vụ -->
             <LinearLayout
+                android:id="@+id/service_directory"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
@@ -156,6 +159,7 @@
 
             <!-- Box 5: Thống kê -->
             <LinearLayout
+                android:id="@+id/statistical"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
@@ -180,6 +184,7 @@
 
             <!-- Box 6: Phân quyền -->
             <LinearLayout
+                android:id="@+id/decentralization"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"

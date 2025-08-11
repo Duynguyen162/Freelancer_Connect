@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Freelancer_connect</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="action_search">Tìm kiếm</string>
+    <string name="app_name">Freelancer Connect</string>
+
+    <string-array name="user_types">
+        <item>Tất cả người dùng</item>
+        <item>Nhà cung cấp dịch vụ</item>
+        <item>Khách thuê dịch vụ</item>
+    </string-array>
 </resources>
