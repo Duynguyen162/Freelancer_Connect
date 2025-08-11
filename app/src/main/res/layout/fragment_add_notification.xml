@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_input_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Send To -->
+    <TextView
+        android:id="@+id/tv_gui_den"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi đến:"
+        android:textSize="16sp"
+        android:textColor="#222A35"
+        android:layout_marginTop="8dp" />
+
+    <Spinner
+        android:id="@+id/spinner_nguoi_dung"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_search"
+        android:entries="@array/user_types" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_tieu_de"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiêu đề:"
+        android:textSize="16sp"
+        android:textColor="#222A35"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/edt_tieu_de"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="VD: cập nhật chính sách mới"
+        android:textSize="15sp"
+        android:background="@drawable/bg_search"
+        android:layout_marginTop="8dp" />
+
+    <!-- Content -->
+    <TextView
+        android:id="@+id/tv_noi_dung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nội dung:"
+        android:textSize="16sp"
+        android:textColor="#222A35"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/edt_noi_dung"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:hint=""
+        android:textSize="15sp"
+        android:background="@drawable/bg_search"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btn_gui_thong_bao"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Gửi thông báo"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/bg_btn"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

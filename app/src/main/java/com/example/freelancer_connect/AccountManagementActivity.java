@@ -43,7 +43,7 @@ public class AccountManagementActivity extends AppCompatActivity {
 
         adapter = new UserAdapter(userList);
         recyclerViewUsers.setAdapter(adapter);
-        recyclerViewUsers.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerViewUsers.setLayoutManager(new GridLayoutManager(this, 2));
 
         adapter.setOnItemClickListener(user -> {
             Intent intent = new Intent(AccountManagementActivity.this, ProfileCustomActivity.class);
