@@ -37,9 +37,9 @@ public class AccountManagementActivity extends AppCompatActivity {
         recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
 
         userList = new ArrayList<>();
-        userList.add(new User("Nguyễn A", "123456", "a@gmail.com", "Client", "0901234567", "Hà Nội", R.drawable.ic_logo));
-        userList.add(new User("Trần B", "789012", "b@gmail.com", "Freelancer", "0907654321", "Đà Nẵng", R.drawable.ic_logo));
-        userList.add(new User("Lê C", "345678", "c@gmail.com", "Freelancer", "0911122233", "Hồ Chí Minh", R.drawable.ic_logo));
+        userList.add(new User("Nguyễn A", "123456", "a@gmail.com", "Client", "0901234567", "Hà Nội", R.drawable.ic_avatar_default));
+        userList.add(new User("Trần B", "789012", "b@gmail.com", "Freelancer", "0907654321", "Đà Nẵng", R.drawable.ic_avatar_default));
+        userList.add(new User("Lê C", "345678", "c@gmail.com", "Freelancer", "0911122233", "Hồ Chí Minh", R.drawable.ic_avatar_default));
 
         adapter = new UserAdapter(userList);
         recyclerViewUsers.setAdapter(adapter);
