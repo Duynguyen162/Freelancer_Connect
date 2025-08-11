@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     TextView tv_register;
+    TextView tv_forgot_password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +25,20 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         btn_login = findViewById(R.id.btnLogin);
         tv_register = findViewById(R.id.tvRegister);
-        tv_register.setOnClickListener( v -> {
+        tv_forgot_password=findViewById(R.id.tvForgotPassword);
+
+        tv_forgot_password.setOnClickListener( v -> {
             Intent intent = new Intent(this ,CustomerActivity.class);
             startActivity(intent);
         });
+        tv_register.setOnClickListener( v -> {
+            Intent intent = new Intent(this ,RegisterActivity.class);
+            startActivity(intent);
+        });
+
         btn_login.setOnClickListener(v -> {
             Intent intent = new Intent(this ,HomeAdminActivity.class);
             startActivity(intent);
