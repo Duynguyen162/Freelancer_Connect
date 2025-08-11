@@ -1,8 +1,5 @@
 package com.example.freelancer_connect.provider;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder> implements Filterable{
-    private Context mContext;
     private List<Provider> mListProvider;
     private List<Provider> mListProviderOld;
+    private IClickItemProviderListener iClickItemProviderListener;
 
-    public ProviderAdapter(Context mContext, List<Provider> mListProvider) {
-        this.mContext = mContext;
+    public ProviderAdapter(List<Provider> mListProvider, IClickItemProviderListener iClickItemProviderListener) {
         this.mListProvider = mListProvider;
         this.mListProviderOld = mListProvider;
+        this.iClickItemProviderListener = iClickItemProviderListener;
     }
 
 
@@ -53,7 +50,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         holder.providerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickGoToDeTail(provider);
+                iClickItemProviderListener.onClickItemProvider(provider);
             }
         });
     }
@@ -66,13 +63,6 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         return 0;
     }
 
-    private void onClickGoToDeTail(Provider provider) {
-        Intent intent = new Intent(mContext, ProviderDetailInfo.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_provider", provider);
-        intent.putExtras(bundle);
-        mContext.startActivity(intent);
-    }
 
     @Override
     public Filter getFilter() {
