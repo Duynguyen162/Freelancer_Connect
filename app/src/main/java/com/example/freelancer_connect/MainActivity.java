@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btnLogin);
         tv_register = findViewById(R.id.tvRegister);
         tv_register.setOnClickListener( v -> {
-            Intent intent = new Intent(this ,RegisterActivity.class);
+            Intent intent = new Intent(this ,CustomerActivity.class);
             startActivity(intent);
         });
         btn_login.setOnClickListener(v -> {
