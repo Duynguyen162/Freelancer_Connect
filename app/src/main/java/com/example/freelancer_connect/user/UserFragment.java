@@ -23,7 +23,7 @@ public class UserFragment extends Fragment {
     private EditText edtLoginName, edtID, edtEmail, edtPhone, edtDOB;
     private RadioGroup rdGender;
     private RadioButton rbMale, rbFemale;
-    private LinearLayout btnLogOut;
+    private LinearLayout btnLogOut, btnEdit;
 
 
     public UserFragment() {
@@ -51,6 +51,7 @@ public class UserFragment extends Fragment {
         rbMale = rootView.findViewById(R.id.user_radio_button_male);
         rbFemale = rootView.findViewById(R.id.user_radio_button_female);
         btnLogOut = rootView.findViewById(R.id.user_button_logout);
+        btnEdit = rootView.findViewById(R.id.user_button_edit_profile);
         return rootView;
     }
 
@@ -76,6 +77,13 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditUserActivity.class);
                 startActivity(intent);
             }
         });
