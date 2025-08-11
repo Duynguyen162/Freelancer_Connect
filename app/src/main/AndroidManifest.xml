@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freelancer_connect">
         <activity
+            android:name=".ServiceManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotificationManagementActivity"
             android:exported="false" />
         <activity
