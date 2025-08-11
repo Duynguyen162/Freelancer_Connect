@@ -24,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        btn_login = findViewById(R.id.btnLogin);
         tv_register = findViewById(R.id.tvRegister);
         tv_register.setOnClickListener( v -> {
             Intent intent = new Intent(this ,CustomerActivity.class);
+            startActivity(intent);
+        });
+        btn_login.setOnClickListener(v -> {
+            Intent intent = new Intent(this ,HomeAdminActivity.class);
             startActivity(intent);
         });
 
