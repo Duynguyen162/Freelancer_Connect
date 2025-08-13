@@ -16,7 +16,7 @@ import com.example.freelancer_connect.model.User;
 
 import java.util.List;
 
-public class ServiceManagementFragment extends Fragment {
+public class ApprovedServiceFragment extends Fragment {
     private RecyclerView recyclerView;
 
     @Nullable
@@ -25,6 +25,7 @@ public class ServiceManagementFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting_approve, container, false);
+
         recyclerView = view.findViewById(R.id.recycler_service_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

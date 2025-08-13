@@ -27,7 +27,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quản lí thông báo"
+            android:text="Xác thực đăng kí"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold"

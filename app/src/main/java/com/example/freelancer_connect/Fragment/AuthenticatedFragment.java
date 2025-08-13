@@ -1,4 +1,5 @@
 package com.example.freelancer_connect.Fragment;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.adapter.AuthenticatedServiceAdapter;
+import com.example.freelancer_connect.adapter.ApprovedServiceAdapter;
 import com.example.freelancer_connect.model.User;
 
 import java.util.List;
 
-public class ServiceManagementFragment extends Fragment {
+public class AuthenticatedFragment extends Fragment {
     private RecyclerView recyclerView;
 
     @Nullable
@@ -31,7 +32,7 @@ public class ServiceManagementFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             List<User> userList = (List<User>) bundle.getSerializable("user_list");
-            recyclerView.setAdapter(new AuthenticatedServiceAdapter(userList));
+            recyclerView.setAdapter(new ApprovedServiceAdapter(userList)); // đổi adapter
         }
 
         return view;
