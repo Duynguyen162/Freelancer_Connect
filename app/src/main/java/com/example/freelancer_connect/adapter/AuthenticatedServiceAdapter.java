@@ -13,10 +13,10 @@ import com.example.freelancer_connect.model.User;
 
 import java.util.List;
 
-public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.UserViewHolder> {
+public class AuthenticatedServiceAdapter extends RecyclerView.Adapter<AuthenticatedServiceAdapter.UserViewHolder> {
     private List<User> userList;
 
-    public ServiceAdapter(List<User> userList) {
+    public AuthenticatedServiceAdapter(List<User> userList) {
         this.userList = userList;
     }
 
@@ -24,7 +24,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.UserView
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_service, parent, false);
+                .inflate(R.layout.item_pending_service, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -33,9 +33,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.UserView
         User user = userList.get(position);
         holder.imgAvatar.setImageResource(user.getAvatarResId());
         holder.tvName.setText(user.getName());
-
-        // Vì User không có trường "giá", ta có thể hiển thị role, phone, hoặc code
-        holder.tvPrice.setText(user.getRole());
+        
 
         // Xử lý nút
         holder.btnDuyet.setOnClickListener(v ->

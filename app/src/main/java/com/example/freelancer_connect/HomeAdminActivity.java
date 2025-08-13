@@ -41,7 +41,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         });
 
         authenticateRegistration.setOnClickListener(v -> {
-            Intent intent = new Intent(this ,ServiceManagementActivity.class);
+            Intent intent = new Intent(this , ServiceAuthenticationManagementActivity.class);
             startActivity(intent);
         });
     }
