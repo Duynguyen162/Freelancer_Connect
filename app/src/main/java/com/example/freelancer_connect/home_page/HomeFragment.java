@@ -15,17 +15,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuItemCompat;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
+import com.example.freelancer_connect.provider.IClickItemProviderListener;
 import com.example.freelancer_connect.provider.Provider;
 import com.example.freelancer_connect.provider.ProviderAdapter;
 import com.example.freelancer_connect.provider.ProviderDetailInfo;
@@ -49,14 +46,15 @@ public class HomeFragment extends Fragment implements MenuProvider {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-
-
         homeRecyclerView = rootView.findViewById(R.id.recycler_view_provider_item);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         homeRecyclerView.setLayoutManager(gridLayoutManager);
-        providerAdapter = new ProviderAdapter(getContext(), getListProvider());
+        providerAdapter = new ProviderAdapter(getListProvider(), new IClickItemProviderListener() {
+            @Override
+            public void onClickItemProvider(Provider provider) {
+                onClickGoToProviderDetail(provider);
+            }
+        });
         homeRecyclerView.setAdapter(providerAdapter);
         return rootView;
     }
@@ -75,12 +73,6 @@ public class HomeFragment extends Fragment implements MenuProvider {
         list.add(new Provider(R.drawable.img_user, "Trang điểm", "500.000đ", "Đã được thuê: 500", "5"));
 
         return list;
-    }
-
-    private void onItemClick(Provider provider) {
-        Intent intent = new Intent(getContext(), ProviderDetailInfo.class);
-        intent.putExtra("EXTRA_DATA_KEY", provider.getPrice()); // Truyền dữ liệu đi kèm nếu cần
-        startActivity(intent);
     }
 
     @Override
@@ -121,4 +113,13 @@ public class HomeFragment extends Fragment implements MenuProvider {
         });
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+    private void onClickGoToProviderDetail(Provider provider) {
+        Intent intent = new Intent(getContext(), ProviderDetailInfo.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_provider", provider);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 }
