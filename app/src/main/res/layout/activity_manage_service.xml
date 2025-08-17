@@ -17,6 +17,7 @@
             android:id="@+id/manage_service_btn_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:padding="4dp"
             android:src="@drawable/btn_back"
             android:layout_marginTop="25dp"
             android:layout_marginStart="15dp"/>
