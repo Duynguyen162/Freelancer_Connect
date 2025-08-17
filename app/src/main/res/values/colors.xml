@@ -6,4 +6,12 @@
     <color name="service_item_color">#ADD6F7</color>
     <color name="border_color">#0325FF</color>
     <color name="primary_color">#286291</color>
+    <color name="light_blue">#ADD6F7</color>
+
+    <color name="header_blue">#3379ad</color>
+    <color name="active_tab">#3379ad</color>
+    <color name="inactive_tab">#DDDDDD</color>
+    <color name="button_blue">#0554f2</color>
+    <color name="outline_blue">#3379ad</color>
+
 </resources>
