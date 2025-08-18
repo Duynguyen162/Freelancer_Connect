@@ -12,6 +12,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment implements MenuProvider {
     private RecyclerView homeRecyclerView;
     private ProviderAdapter providerAdapter;
     private SearchView searchView;
+    private Spinner categorySpinner;
 
 
 
@@ -56,14 +60,48 @@ public class HomeFragment extends Fragment implements MenuProvider {
             }
         });
         homeRecyclerView.setAdapter(providerAdapter);
+        categorySpinner = rootView.findViewById(R.id.spinner_provider_category);
+        String categories[]  = {"Tất cả", "Gia sư", "Sửa chữa"};
+        categorySpinner.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, categories));
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                if (selectedItem.equals("Tất cả")) {
+                    providerAdapter.setFilteredList(providerAdapter.getOriginalList());
+                    providerAdapter.setFinalFilteredList(providerAdapter.getFilteredList());
+                    providerAdapter.notifyDataSetChanged();
+                } else {
+                    List<Provider> newList = new ArrayList<>();
+                    for (Provider provider : providerAdapter.getOriginalList()) {
+                        if (provider.getTilte().toLowerCase().contains(selectedItem.toLowerCase())) {
+                            newList.add(provider);
+                        }
+                    }
+                    providerAdapter.setFilteredList(newList);
+                    providerAdapter.setFinalFilteredList(providerAdapter.getFilteredList());
+                    providerAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private List<Provider> getListProvider() {
         List<Provider> list = new ArrayList();
         list.add(new Provider(R.drawable.img_user, "Gia sư Toán", "700.000đ", "Đã được thuê: 500", "5"));
         list.add(new Provider(R.drawable.img_user, "Thiết kế nội thất", "900.000đ", "Đã được thuê: 500", "4.5"));
-        list.add(new Provider(R.drawable.img_user, "Sửa chữa máy tính", "1.700.000đ", "Đã được thuê: 500", "4.7"));
+        list.add(new Provider(R.drawable.img_user, "Gia sư tiếng Anh", "1.700.000đ", "Đã được thuê: 500", "4.7"));
         list.add(new Provider(R.drawable.img_user, "Thiết kế website", "700.000đ", "Đã được thuê: 500", "4.8"));
         list.add(new Provider(R.drawable.img_user, "Trang điểm", "500.000đ", "Đã được thuê: 500", "5"));
 
