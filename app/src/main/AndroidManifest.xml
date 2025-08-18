@@ -42,13 +42,7 @@
             android:name=".CustomerActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterProviderActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterCustomerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".AccountManagementActivity"
@@ -61,7 +55,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
