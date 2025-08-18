@@ -147,15 +147,28 @@
             android:layout_height="wrap_content"
             android:text="Ngày sinh:" />
 
-        <EditText
-            android:id="@+id/edit_text_user_dob"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="66dp"
-            android:background="@drawable/edittext_border"
-            android:ems="10"
-            android:inputType="text"
-            android:padding="4dp" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_text_user_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="66dp"
+                android:background="@drawable/edittext_border"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="4dp"
+                android:focusable="false"
+                android:clickable="true"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_calendar"
+                android:layout_marginStart="230dp"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -224,7 +237,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/user_btn_manage_service"
+        android:id="@+id/user_button_manage_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_layout_gender"

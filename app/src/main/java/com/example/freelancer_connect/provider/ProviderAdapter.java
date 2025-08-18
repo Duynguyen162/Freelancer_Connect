@@ -18,16 +18,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder> implements Filterable{
-    private List<Provider> mListProvider;
-    private List<Provider> mListProviderOld;
+    private List<Provider> originalList;
+    private List<Provider> filteredList;
+    private List<Provider> finalFilteredList;
     private IClickItemProviderListener iClickItemProviderListener;
 
-    public ProviderAdapter(List<Provider> mListProvider, IClickItemProviderListener iClickItemProviderListener) {
-        this.mListProvider = mListProvider;
-        this.mListProviderOld = mListProvider;
+    public ProviderAdapter(List<Provider> originalList, IClickItemProviderListener iClickItemProviderListener) {
+        this.originalList = originalList;
+        filteredList = originalList;
+        finalFilteredList = originalList;
         this.iClickItemProviderListener = iClickItemProviderListener;
     }
 
+
+    public List<Provider> getFinalFilteredList() {
+        return finalFilteredList;
+    }
+
+    public void setFinalFilteredList(List<Provider> finalFilteredList) {
+        this.finalFilteredList = finalFilteredList;
+    }
+
+    public List<Provider> getOriginalList() {
+        return originalList;
+    }
+
+    public void setOriginalList(List<Provider> originalList) {
+        this.originalList = originalList;
+    }
+
+    public List<Provider> getFilteredList() {
+        return filteredList;
+    }
+
+    public void setFilteredList(List<Provider> filteredList) {
+        this.filteredList = filteredList;
+    }
 
     @NonNull
     @Override
@@ -38,7 +64,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
 
     @Override
     public void onBindViewHolder(@NonNull ProviderViewHolder holder, int position) {
-        final Provider provider = mListProvider.get(position);
+        final Provider provider = finalFilteredList.get(position);
         if (provider == null) {
             return;
         }
@@ -57,8 +83,8 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
 
     @Override
     public int getItemCount() {
-        if (mListProvider != null) {
-            return mListProvider.size();
+        if (finalFilteredList != null) {
+            return finalFilteredList.size();
         }
         return 0;
     }
@@ -71,26 +97,26 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
             protected FilterResults performFiltering(CharSequence constraint) {
                 String strSearch = constraint.toString();
                 if (strSearch.isEmpty()) {
-                    mListProvider = mListProviderOld;
+                    finalFilteredList = filteredList;
                 } else {
-                    List<Provider> list= new ArrayList<>();
-                    for (Provider provider : mListProviderOld) {
+                    List<Provider> newList = new ArrayList<>();
+                    for (Provider provider : filteredList) {
                         if (provider.getTilte().toLowerCase().contains(strSearch.toLowerCase())) {
-                            list.add(provider);
+                            newList.add(provider);
                         }
                     }
-                    mListProvider = list;
+                    finalFilteredList = newList;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = mListProvider;
+                filterResults.values = finalFilteredList;
 
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                mListProvider = (List<Provider>) results.values;
+                finalFilteredList = (List<Provider>) results.values;
                 notifyDataSetChanged();
             }
         };

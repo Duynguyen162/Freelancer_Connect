@@ -7,6 +7,16 @@
     android:backgroundTint="#03A9F4"
     tools:context=".HomeFragment">
 
+    <Spinner
+        android:id="@+id/spinner_provider_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/custom_spinner"
+        android:dropDownVerticalOffset="52dp"/>
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
@@ -15,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:padding="16dp"/>
+        android:padding="16dp"
+        android:layout_below="@+id/spinner_provider_category"/>
 
 </RelativeLayout>
