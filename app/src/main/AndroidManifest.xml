@@ -12,11 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freelancer_connect">
         <activity
+            android:name=".DecentralizationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".ServiceAuthenticationManagementActivity"
             android:theme="@style/Theme.YourApp.NoActionBar"
             android:exported="false" />
-      <activity
 
+      <activity
             android:name=".user.ManageServiceActivity"
             android:exported="false" />
         <activity
