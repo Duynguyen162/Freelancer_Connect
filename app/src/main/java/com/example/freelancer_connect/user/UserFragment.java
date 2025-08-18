@@ -1,15 +1,18 @@
 package com.example.freelancer_connect.user;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +21,17 @@ import androidx.fragment.app.Fragment;
 import com.example.freelancer_connect.LoginActivity;
 import com.example.freelancer_connect.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class UserFragment extends Fragment {
     private TextView txtUserName;
     private EditText edtLoginName, edtID, edtEmail, edtPhone, edtDOB;
     private RadioGroup rdGender;
     private RadioButton rbMale, rbFemale;
-    private LinearLayout btnLogOut, btnEdit;
+    private LinearLayout btnLogOut, btnEdit, btnManageService;
+    final Calendar myCalendar = Calendar.getInstance();
 
 
     public UserFragment() {
@@ -52,6 +60,7 @@ public class UserFragment extends Fragment {
         rbFemale = rootView.findViewById(R.id.user_radio_button_female);
         btnLogOut = rootView.findViewById(R.id.user_button_logout);
         btnEdit = rootView.findViewById(R.id.user_button_edit_profile);
+        btnManageService = rootView.findViewById(R.id.user_button_manage_service);
         return rootView;
     }
 
@@ -84,6 +93,13 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditUserActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnManageService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ManageServiceActivity.class);
                 startActivity(intent);
             }
         });

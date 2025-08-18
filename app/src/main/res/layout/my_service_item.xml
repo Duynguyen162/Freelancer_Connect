@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/my_service_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/img_user" />
+
+        <TextView
+            android:id="@+id/my_service_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Gia sư tiếng Anh"
+            android:layout_toEndOf="@+id/my_service_image"
+            android:layout_marginStart="15dp"/>
+
+        <TextView
+            android:id="@+id/my_service_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="150.000đ/giờ"
+            android:layout_toEndOf="@+id/my_service_image"
+            android:layout_below="@+id/my_service_title"
+            android:layout_marginStart="15dp"/>
+
+        <LinearLayout
+            android:id="@+id/my_service_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/my_service_title"
+            android:layout_marginStart="50dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/my_service_star_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginEnd="4dp"
+                android:text="0.0"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_service_controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_service_image"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="15dp">
+
+            <Button
+                android:id="@+id/my_service_button_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/my_service_custom_button"
+                android:text="Xóa"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/my_service_button_update"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/my_service_custom_button"
+                android:text="Sửa"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

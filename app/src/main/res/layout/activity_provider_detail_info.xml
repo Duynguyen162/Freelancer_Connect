@@ -16,20 +16,21 @@
 
         <ImageView
             android:id="@+id/user_detail_btn_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="4dp"
             android:src="@drawable/btn_back"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
+            android:padding="15dp"
             android:text="Thông tin chi tiết"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="15dp"/>
 
@@ -62,187 +63,235 @@
         android:layout_below="@+id/detail_title"
         android:layout_marginBottom="10dp"/>
 
-    <ImageView
-        android:id="@+id/service_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/detail_image"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/detail_service"
+    <LinearLayout
+        android:id="@+id/layout_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/detail_image"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/title_dot"
-        android:text="Tên dịch vụ:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/detail_service_text"
+        <ImageView
+            android:id="@+id/service_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/detail_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/title_dot"
+            android:text="Tên dịch vụ:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detail_service_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/detail_service"
+            android:text="Gia sư tiếng Anh"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_image"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/detail_service"
-        android:text="Gia sư tiếng Anh"
-        android:textSize="16sp" />
+        android:layout_below="@+id/layout_service">
 
-    <ImageView
-        android:id="@+id/description_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/detail_service"
-        android:layout_marginBottom="10dp"/>
+        <ImageView
+            android:id="@+id/description_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_below="@id/detail_service"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/detail_description"
+        <TextView
+            android:id="@+id/detail_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/description_dot"
+            android:layout_below="@id/detail_service"
+            android:textSize="16sp"
+            android:text="Mô tả chi tiết:"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/detail_description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Dạy tiếng Anh cho học sinh cấp 2, chuyên luyện thi, đã có kinh nghiệm 8 năm"
+            android:layout_below="@id/detail_description"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/description_dot"
-        android:layout_below="@id/detail_service"
-        android:textSize="16sp"
-        android:text="Mô tả chi tiết:"
-        android:textStyle="bold"/>
+        android:layout_below="@+id/layout_description">
 
-    <TextView
-        android:id="@+id/detail_description_text"
+        <ImageView
+            android:id="@+id/category_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_below="@id/detail_description_text"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/detail_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_description_text"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/description_dot"
+            android:text="Danh mục dịch vụ:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detail_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Gia sư và đào tạo"
+            android:layout_below="@+id/detail_description_text"
+            android:layout_toEndOf="@id/detail_category"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Dạy tiếng Anh cho học sinh cấp 2, chuyên luyện thi, đã có kinh nghiệm 8 năm"
-        android:layout_below="@id/detail_description"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_below="@+id/layout_category">
 
-    <ImageView
-        android:id="@+id/category_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/detail_description_text"
-        android:layout_marginBottom="10dp"/>
+        <ImageView
+            android:id="@+id/area_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_below="@id/detail_category"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/detail_category"
+        <TextView
+            android:id="@+id/detail_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_category"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/area_dot"
+            android:text="Khu vực:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detail_area_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Quận Thanh Xuân, Hà Nội"
+            android:layout_below="@+id/detail_category"
+            android:layout_toEndOf="@id/detail_area"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_description_text"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/description_dot"
-        android:text="Danh mục dịch vụ:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_below="@+id/layout_area">
 
-    <TextView
-        android:id="@+id/detail_category_text"
+        <ImageView
+            android:id="@+id/price_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_below="@id/area_dot"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/area_dot"
+            android:layout_below="@id/area_dot"
+            android:textSize="16sp"
+            android:text="Chi phí:"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/detail_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Quận Thanh Xuân, Hà Nội"
+            android:layout_below="@+id/detail_area"
+            android:layout_toEndOf="@id/detail_price"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Gia sư và đào tạo"
-        android:layout_below="@+id/detail_description_text"
-        android:layout_toEndOf="@id/detail_category"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_below="@+id/layout_price">
 
-    <ImageView
-        android:id="@+id/area_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/detail_category"
-        android:layout_marginBottom="10dp"/>
+        <ImageView
+            android:id="@+id/time_dot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/image_dot"
+            android:layout_below="@id/price_dot"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/detail_area"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detail_category"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/area_dot"
-        android:text="Khu vực:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/price_dot"
+            android:layout_below="@id/price_dot"
+            android:textSize="16sp"
+            android:text="Giờ làm việc:"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/detail_area_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Quận Thanh Xuân, Hà Nội"
-        android:layout_below="@+id/detail_category"
-        android:layout_toEndOf="@id/detail_area"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/detail_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Từ thứ 2 đến thứ sáu"
+            android:layout_below="@+id/detail_price"
+            android:layout_toEndOf="@id/detail_time"
+            android:layout_marginStart="10dp" />
 
-    <ImageView
-        android:id="@+id/price_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/area_dot"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:id="@+id/detail_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/area_dot"
-        android:layout_below="@id/area_dot"
-        android:textSize="16sp"
-        android:text="Chi phí:"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/detail_price_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Quận Thanh Xuân, Hà Nội"
-        android:layout_below="@+id/detail_area"
-        android:layout_toEndOf="@id/detail_price"
-        android:layout_marginStart="10dp" />
-
-    <ImageView
-        android:id="@+id/time_dot"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/image_dot"
-        android:layout_below="@id/price_dot"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/detail_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/price_dot"
-        android:layout_below="@id/price_dot"
-        android:textSize="16sp"
-        android:text="Giờ làm việc:"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/detail_time_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Từ thứ 2 đến thứ sáu"
-        android:layout_below="@+id/detail_price"
-        android:layout_toEndOf="@id/detail_time"
-        android:layout_marginStart="10dp" />
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lấy thông tin liên hệ"
-        android:layout_below="@id/time_dot"
+        android:layout_below="@id/layout_time"
         android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/button_color"
-        android:layout_marginTop="10dp"/>
+        android:text="Lấy thông tin liên hệ"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp" />
 </RelativeLayout>

@@ -13,14 +13,17 @@
         android:theme="@style/Theme.Freelancer_connect">
         <activity
             android:name=".ServiceAuthenticationManagementActivity"
+            android:theme="@style/Theme.YourApp.NoActionBar"
             android:exported="false" />
       <activity
+
             android:name=".user.ManageServiceActivity"
             android:exported="false" />
         <activity
             android:name=".user.EditUserActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.YourApp.NoActionBar"
             android:name=".provider.ProviderDetailInfo"
             android:exported="false" />
         <activity
