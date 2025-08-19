@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
 import com.example.freelancer_connect.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
-
     private List<User> userList;
     private OnItemClickListener listener;
 
@@ -29,6 +29,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public UserAdapter(List<User> userList) {
         this.userList = userList;
+    }
+
+    public void updateList(List<User> newList) {
+        this.userList = newList;
+        notifyDataSetChanged();
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
@@ -55,12 +60,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         User user = userList.get(position);
         holder.textName.setText(user.getName());
         holder.textCode.setText("Mã: " + user.getCode());
-        holder.imageAvatar.setImageResource(user.getAvatarResId());
+
+        // Load avatar (ưu tiên Firebase URL, fallback resId)
+        if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+            Picasso.get()
+                    .load(user.getAvatarUrl())
+                    .placeholder(R.drawable.ic_avatar_default)
+                    .error(R.drawable.ic_avatar_default)
+                    .into(holder.imageAvatar);
+        } else {
+            holder.imageAvatar.setImageResource(
+                    user.getAvatarResId() != 0 ? user.getAvatarResId() : R.drawable.ic_avatar_default
+            );
+        }
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(user);
-            }
+            if (listener != null) listener.onItemClick(user);
         });
     }
 
