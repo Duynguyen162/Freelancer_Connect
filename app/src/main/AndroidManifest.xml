@@ -40,6 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".HomeAdminActivity"
+            android:theme="@style/Theme.YourApp.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".CustomerActivity"

@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,27 +47,24 @@
             android:layout_height="44dp"
             android:orientation="horizontal"
             android:gravity="center">
-
-            <Button
-                android:id="@+id/create_account_tab"
-                android:layout_width="140dp"
-                android:layout_height="36dp"
+            <android.widget.Button
+                android:id="@+id/btn_add_account"
+                android:layout_width="125dp"
+                android:layout_height="38dp"
                 android:text="Tạo tài khoản"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginEnd="8dp"
-                android:elevation="2dp"
-                android:background="@drawable/bg_header_button"/>
-
-            <Button
-                android:id="@+id/list_tab"
-                android:layout_width="140dp"
-                android:layout_height="36dp"
-                android:text="Danh sách"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:elevation="2dp"
-                android:background="@drawable/bg_header_button"/>
+                android:background="@drawable/bg_header_button"
+                android:textColor="#222A35"
+                android:textSize="12sp"
+                android:layout_marginEnd="7dp" />
+            <android.widget.Button
+                android:id="@+id/btn_list_account"
+                android:layout_width="125dp"
+                android:layout_height="38dp"
+                android:text="Danh SÁCH"
+                android:background="@drawable/bg_header_button"
+                android:textColor="#222A35"
+                android:textSize="12sp"
+                android:layout_marginEnd="7dp" />
         </LinearLayout>
     </LinearLayout>
 
