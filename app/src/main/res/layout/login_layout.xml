@@ -7,8 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
-    android:background="#F5F7FA"
-    >
+    android:layout_marginTop="60dp"
+    android:background="#F5F7FA">
 
     <!-- Logo -->
     <ImageView

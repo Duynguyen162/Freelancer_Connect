@@ -151,10 +151,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:padding="5dp"
                     android:layout_gravity="center"
                     android:text="Danh mục các dịch vụ"
                     android:textColor="#222222"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:gravity="center" />
             </LinearLayout>
 
             <!-- Box 5: Thống kê -->
