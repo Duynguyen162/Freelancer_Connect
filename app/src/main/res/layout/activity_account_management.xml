@@ -1,60 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account_management"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity"
-    android:id="@+id/activity_account_management"
-    >
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".AccountManagementActivity">
 
-
-    <!-- Thanh tìm kiếm -->
+    <!-- Thanh trên cùng -->
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:gravity="center_vertical"
         android:background="#2A72B1">
+
         <!-- Nút quay lại -->
         <ImageView
+            android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/circle_background"
             android:src="@drawable/ic_back"
             android:scaleType="centerInside"
-            android:padding="8dp" />
+            android:padding="8dp"
+            app:tint="@android:color/white"
+            android:contentDescription="Back"/>
 
+        <!-- Ô tìm kiếm -->
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
 
-            <!-- Ô tìm kiếm -->
             <EditText
-                android:id="@+id/etSearch"
+                android:id="@+id/edtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_search"
                 android:hint="Tìm kiếm"
                 android:paddingStart="16dp"
-                android:paddingEnd="40dp"/>
+                android:paddingEnd="40dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#AAAAAA"/>
 
-            <!-- Icon tìm kiếm -->
             <ImageView
+                android:id="@+id/btnSearch"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_search_black"
                 android:contentDescription="Search"/>
         </RelativeLayout>
-
     </LinearLayout>
 
-    <!-- List danh sách -->
+    <!-- Danh sách -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
