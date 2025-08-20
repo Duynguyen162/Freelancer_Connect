@@ -73,20 +73,24 @@ public class ServiceAuthenticationManagementActivity extends AppCompatActivity {
     // Hàm tạo dữ liệu chờ duyệt
     private List<User> getWaitingApproveUsers() {
         List<User> users = new ArrayList<>();
-        users.add(new User("Nguyễn Văn A", "001", "a@gmail.com", "150.000 đồng/h",
-                "0123456789", "Hà Nội", R.drawable.ic_avatar_default));
-        users.add(new User("Trần Văn B", "002", "b@gmail.com", "200.000 đồng/h",
-                "0987654321", "HCM", R.drawable.ic_avatar_default));
-        users.add(new User("Lê Văn C", "003", "c@gmail.com", "120.000 đồng/h",
-                "0111222333", "Đà Nẵng", R.drawable.ic_avatar_default));
+        users.add(new User("Nguyễn Văn A", "001", "a@gmail.com", "Freelancer",
+                "01234654789", "Hà Nội", R.drawable.ic_avatar_default, null));
+
+        users.add(new User("Nguyễn Văn B", "002", "a@gmail.com", "Freelancer",
+                "0123456789", "Hà Nội", R.drawable.ic_avatar_default, null));
+
+        users.add(new User("Nguyễn Văn C", "003", "a@gmail.com", "Freelancer",
+                "01234512389", "Hà Nội", R.drawable.ic_avatar_default, null));
+
         return users;
     }
 
     // Hàm tạo dữ liệu đã duyệt
     private List<User> getApprovedUsers() {
         List<User> users = new ArrayList<>();
-        users.add(new User("Nguyễn Văn D", "004", "d@gmail.com", "250.000 đồng/h",
-                "0999888777", "Hải Phòng", R.drawable.ic_avatar_default));
+        users.add(new User("Nguyễn Văn D", "004", "a@gmail.com", "Freelancer",
+                "01234454789", "Hà Nội", R.drawable.ic_avatar_default, null));
+
         return users;
     }
 
