@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
         tv_register.setOnClickListener( v -> {
-            Intent intent = new Intent(this ,RegisterActivity.class);
+            Intent intent = new Intent(this , RegisterCustomerActivity.class);
             startActivity(intent);
         });
 
