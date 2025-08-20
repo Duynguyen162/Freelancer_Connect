@@ -2,6 +2,7 @@ package com.example.freelancer_connect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -12,9 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HomeAdminActivity extends AppCompatActivity {
     LinearLayout accountManagement , notificationNanagement ,
-            authenticateRegistration,
-    serviceManagement,decentralization;
-
+            authenticateRegistration, serviceManagement,decentralization;
+    ImageView adminProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         authenticateRegistration = findViewById(R.id.authenticate_registration);
         serviceManagement=findViewById(R.id.service_directory);
         decentralization=findViewById(R.id.decentralization);
-
+        adminProfile =findViewById(R.id.admin_profile);
         //xử lí sk click
 
         accountManagement.setOnClickListener(v -> {
@@ -55,6 +55,9 @@ public class HomeAdminActivity extends AppCompatActivity {
             Intent intent = new Intent(this , DecentralizationActivity.class);
             startActivity(intent);
         });
-
+        adminProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(this , ProfileAdminActivity.class);
+            startActivity(intent);
+        });
     }
 }

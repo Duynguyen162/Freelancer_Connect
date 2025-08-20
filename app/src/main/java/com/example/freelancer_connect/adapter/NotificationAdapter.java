@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
@@ -40,9 +41,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         });
 
         holder.tvDelete.setOnClickListener(v -> {
-            notifications.remove(position);
-            notifyItemRemoved(position);
+            new AlertDialog.Builder(v.getContext())
+                    .setTitle("Xác nhận xóa")
+                    .setMessage("Bạn có chắc chắn muốn xóa thông báo này không?")
+                    .setPositiveButton("Xóa", (dialog, which) -> {
+                        notifications.remove(position);
+                        notifyItemRemoved(position);
+                    })
+                    .setNegativeButton("Hủy", (dialog, which) -> {
+                        dialog.dismiss(); // chỉ đóng hộp thoại
+                    })
+                    .show();
         });
+
     }
 
     @Override
