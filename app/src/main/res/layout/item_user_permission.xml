@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/edittext_border"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nguyễn Duy Hiếu"
+        android:textColor="#1830E6"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginBottom="3dp"/>
+
+    <TextView
+        android:id="@+id/tv_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lí 1"
+        android:textColor="#222"
+        android:textSize="15sp"
+        android:layout_marginBottom="7dp"/>
+
+    <CheckBox
+        android:id="@+id/chk_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lí tài khoản"
+        android:textSize="15sp"/>
+
+    <CheckBox
+        android:id="@+id/chk_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lí thông báo"
+        android:textSize="15sp"/>
+
+    <CheckBox
+        android:id="@+id/chk_authenticate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác thực đăng kí"
+        android:textSize="15sp"/>
+
+    <CheckBox
+        android:id="@+id/chk_statistic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác thực thống kê"
+        android:textSize="15sp"/>
+
+    <CheckBox
+        android:id="@+id/chk_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lí danh mục dịch vụ"
+        android:textSize="15sp"/>
+</LinearLayout>

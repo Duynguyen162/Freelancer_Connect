@@ -30,6 +30,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         notificationNanagement = findViewById(R.id.notification_management);
         authenticateRegistration = findViewById(R.id.authenticate_registration);
         serviceManagement=findViewById(R.id.service_directory);
+        decentralization=findViewById(R.id.decentralization);
 
         //xử lí sk click
 
@@ -50,7 +51,10 @@ public class HomeAdminActivity extends AppCompatActivity {
             Intent intent = new Intent(this , CategoryManagementActivity.class);
             startActivity(intent);
         });
-
+        decentralization.setOnClickListener(v -> {
+            Intent intent = new Intent(this , DecentralizationActivity.class);
+            startActivity(intent);
+        });
 
     }
 }
