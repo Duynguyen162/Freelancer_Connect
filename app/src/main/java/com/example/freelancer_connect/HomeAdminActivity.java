@@ -12,7 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HomeAdminActivity extends AppCompatActivity {
     LinearLayout accountManagement , notificationNanagement ,
-            authenticateRegistration,decentralization, statistical, serviceDirectory;
+            authenticateRegistration,
+    serviceManagement,decentralization;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         accountManagement = findViewById(R.id.account_management);
         notificationNanagement = findViewById(R.id.notification_management);
         authenticateRegistration = findViewById(R.id.authenticate_registration);
+        serviceManagement=findViewById(R.id.service_directory);
 
         //xử lí sk click
 
@@ -44,5 +46,11 @@ public class HomeAdminActivity extends AppCompatActivity {
             Intent intent = new Intent(this , ServiceAuthenticationManagementActivity.class);
             startActivity(intent);
         });
+        serviceManagement.setOnClickListener(v -> {
+            Intent intent = new Intent(this , CategoryManagementActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 }

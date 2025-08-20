@@ -1,0 +1,186 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#3379ad"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_logo" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý danh mục"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp" />
+
+        </LinearLayout>
+
+        <!-- Nội dung thêm danh mục -->
+        <TextView
+            android:id="@+id/add_category_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm danh mục"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/add_image_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm hình ảnh"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/add_image_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:backgroundTint="#0554f2"
+                android:text="+"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                android:background="@drawable/circle_background"
+                android:layout_marginEnd="8dp"/>
+        </LinearLayout>
+
+        <!-- Tên danh mục -->
+        <EditText
+            android:id="@+id/category_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Tên danh mục"
+            android:background="@drawable/edittext_border"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:inputType="text"/>
+
+        <!-- Mô tả chi tiết -->
+        <EditText
+            android:id="@+id/category_description"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Mô tả chi tiết"
+            android:background="@drawable/edittext_border"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:inputType="textMultiLine"/>
+
+        <!-- Khu vực phục vụ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/service_area"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Khu vực phục vụ"
+                android:background="@android:color/transparent"
+                android:paddingStart="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:inputType="text"/>
+
+            <ImageView
+                android:id="@+id/service_area_arrow"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_logo"/>
+        </LinearLayout>
+
+        <!-- Ngày tạo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext_border"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/create_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Ngày tạo"
+                android:background="@android:color/transparent"
+                android:paddingStart="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:inputType="date"/>
+
+            <ImageView
+                android:id="@+id/calendar_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_logo"/>
+        </LinearLayout>
+
+        <!-- Nút thêm mới -->
+        <Button
+            android:id="@+id/add_new_button"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:text="Thêm mới"
+            android:backgroundTint="#0554f2"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="20dp"/>
+    </LinearLayout>
+</ScrollView>
