@@ -25,7 +25,7 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.avatarResId = avatarResId;
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = null; // hoặc để rỗng
     }
 
     // Getter & Setter
