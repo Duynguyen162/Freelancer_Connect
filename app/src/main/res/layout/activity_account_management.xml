@@ -17,31 +17,41 @@
         android:orientation="horizontal"
         android:padding="8dp"
         android:background="#2A72B1">
-
         <!-- Nút quay lại -->
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_avatar_default"
-            android:contentDescription="Back"/>
+            android:layout_marginStart="10dp"
+            android:background="@drawable/circle_background"
+            android:src="@drawable/ic_back"
+            android:scaleType="centerInside"
+            android:padding="8dp" />
 
-        <!-- Ô tìm kiếm -->
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_search"
-            android:hint="Tìm kiếm"
-            android:paddingStart="16dp"
-            android:paddingEnd="40dp"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
 
-        <!-- Icon tìm kiếm -->
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_avatar_default"
-            android:contentDescription="Search"/>
+            <!-- Ô tìm kiếm -->
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_search"
+                android:hint="Tìm kiếm"
+                android:paddingStart="16dp"
+                android:paddingEnd="40dp"/>
+
+            <!-- Icon tìm kiếm -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_search_black"
+                android:contentDescription="Search"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
     <!-- List danh sách -->
