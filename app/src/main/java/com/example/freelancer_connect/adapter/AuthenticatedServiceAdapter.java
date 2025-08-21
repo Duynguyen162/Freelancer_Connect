@@ -33,7 +33,7 @@ public class AuthenticatedServiceAdapter extends RecyclerView.Adapter<Authentica
         User user = userList.get(position);
         holder.imgAvatar.setImageResource(user.getAvatarResId());
         holder.tvName.setText(user.getName());
-        
+
 
         // Xử lý nút
         holder.btnDuyet.setOnClickListener(v ->

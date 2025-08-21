@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
 import com.example.freelancer_connect.home_page.OnClickItemService;
-import com.example.freelancer_connect.model.Service;
+import com.example.freelancer_connect.customer_model.Service;
 
 import java.util.List;
 

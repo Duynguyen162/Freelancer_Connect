@@ -42,7 +42,7 @@
         android:layout_below="@+id/add_my_service_text_view_add_image">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/approving_service_button_add"
             android:background="@drawable/button_add_service_custom"
             android:layout_width="50dp"
             android:layout_height="50dp"

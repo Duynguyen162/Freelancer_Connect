@@ -37,7 +37,7 @@ public class ApprovedServiceAdapter extends RecyclerView.Adapter<ApprovedService
         holder.imgAvatar.setImageResource(user.getAvatarResId());
         holder.tvName.setText(user.getName());
 
-        // Nếu muốn nút khác, có thể thêm ở đây
+         //Nếu muốn nút khác, có thể thêm ở đây
         holder.btnXem.setOnClickListener(v ->
                 System.out.println("Xem chi tiết (Đã xác thực): " + user.getName()));
     }

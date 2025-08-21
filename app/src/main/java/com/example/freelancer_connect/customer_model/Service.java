@@ -1,4 +1,4 @@
-package com.example.freelancer_connect.model;
+package com.example.freelancer_connect.customer_model;
 
 import java.io.Serializable;
 

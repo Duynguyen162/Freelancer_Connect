@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.model.Service;
+import com.example.freelancer_connect.customer_model.Service;
 
 public class ServiceDetailActivity extends AppCompatActivity {
     private ImageView btnBack;
