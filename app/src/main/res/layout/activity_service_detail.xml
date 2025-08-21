@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".provider.ProviderDetailInfo">
+    tools:context=".home_page.ServiceDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:id="@+id/detail_heading">
 
         <ImageView
-            android:id="@+id/user_detail_btn_back"
+            android:id="@+id/service_detail_button_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:padding="4dp"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/detail_title"
+        android:id="@+id/service_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/title_dot"
@@ -56,18 +56,18 @@
         android:layout_marginBottom="10dp"/>
 
     <ImageView
-        android:id="@+id/detail_image"
+        android:id="@+id/service_image"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:src="@drawable/img_user"
-        android:layout_below="@+id/detail_title"
+        android:layout_below="@+id/service_title"
         android:layout_marginBottom="10dp"/>
 
     <LinearLayout
         android:id="@+id/layout_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_image"
+        android:layout_below="@id/service_image"
         android:gravity="center">
 
         <ImageView
@@ -78,7 +78,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_service"
+            android:id="@+id/service_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -88,12 +88,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/detail_service_text"
+            android:id="@+id/service_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_toEndOf="@+id/detail_service"
+            android:layout_toEndOf="@+id/service_name"
             android:text="Gia sư tiếng Anh"
             android:textSize="16sp" />
 
@@ -114,7 +114,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_description"
+            android:id="@+id/service_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/description_dot"
@@ -124,7 +124,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/detail_description_text"
+            android:id="@+id/service_description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -150,7 +150,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_category"
+            android:id="@+id/service_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/detail_description_text"
@@ -161,7 +161,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/detail_category_text"
+            android:id="@+id/service_category_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -188,7 +188,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_area"
+            android:id="@+id/service_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/detail_category"
@@ -199,13 +199,13 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/detail_area_text"
+            android:id="@+id/service_area_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="Quận Thanh Xuân, Hà Nội"
             android:layout_below="@+id/detail_category"
-            android:layout_toEndOf="@id/detail_area"
+            android:layout_toEndOf="@id/service_area"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"/>
 
@@ -226,7 +226,7 @@
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:id="@+id/detail_price"
+            android:id="@+id/service_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/area_dot"
@@ -237,7 +237,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_price_text"
+            android:id="@+id/service_price_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -263,7 +263,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/detail_time"
+            android:id="@+id/service_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/price_dot"
@@ -273,7 +273,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/detail_time_text"
+            android:id="@+id/service_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -285,6 +285,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/button_get_service_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_time"

@@ -1,9 +1,6 @@
 package com.example.freelancer_connect.home_page;
 
-import static androidx.core.content.ContextCompat.getSystemService;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,31 +12,42 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuHost;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.provider.IClickItemProviderListener;
-import com.example.freelancer_connect.provider.Provider;
-import com.example.freelancer_connect.provider.ProviderAdapter;
-import com.example.freelancer_connect.provider.ProviderDetailInfo;
+import com.example.freelancer_connect.customer_adapter.ServiceAdapter;
+import com.example.freelancer_connect.model.Service;
+import com.example.freelancer_connect.user_service.AddMyServiceActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment implements MenuProvider {
-    private RecyclerView homeRecyclerView;
-    private ProviderAdapter providerAdapter;
-    private SearchView searchView;
+public class HomeFragment extends Fragment  {
+
     private Spinner categorySpinner;
+    private RecyclerView recyclerView;
+    private ServiceAdapter serviceAdapter;
+    private SearchView searchView;
+    private List<Service> originalServiceList = new ArrayList<>();
+    private List<Service> spinnerFilteredServiceList = new ArrayList<>();
+    private List<Service> searchFilteredServiceList = new ArrayList<>();
 
-
+    private List<String> categoryList = new ArrayList<>();
+    private FirebaseFirestore db;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -50,44 +58,108 @@ public class HomeFragment extends Fragment implements MenuProvider {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        homeRecyclerView = rootView.findViewById(R.id.recycler_view_provider_item);
+
+        db = FirebaseFirestore.getInstance();
+
+        categorySpinner = rootView.findViewById(R.id.spinner_service_category);
+
+        recyclerView = rootView.findViewById(R.id.recycler_view_service_item);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        homeRecyclerView.setLayoutManager(gridLayoutManager);
-        providerAdapter = new ProviderAdapter(getListProvider(), new IClickItemProviderListener() {
+        recyclerView.setLayoutManager(gridLayoutManager);
+        serviceAdapter = new ServiceAdapter(searchFilteredServiceList, new OnClickItemService() {
             @Override
-            public void onClickItemProvider(Provider provider) {
-                onClickGoToProviderDetail(provider);
+            public void onServiceClickListener(Service service) {
+                Intent intent = new Intent(getContext(), ServiceDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_service", service);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
-        homeRecyclerView.setAdapter(providerAdapter);
-        categorySpinner = rootView.findViewById(R.id.spinner_provider_category);
-        String categories[]  = {"Tất cả", "Gia sư", "Sửa chữa"};
-        categorySpinner.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, categories));
+        recyclerView.setAdapter(serviceAdapter);
+
+        MenuHost menuHost = requireActivity();
+        menuHost.addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.main_menu, menu);
+                MenuItem searchItem = menu.findItem(R.id.action_search);
+                SearchView searchView = (SearchView) searchItem.getActionView();
+                searchView.setMaxWidth(Integer.MAX_VALUE);
+
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        filterDataBySearchView(query);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        filterDataBySearchView(newText);
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
+
+
+        setupSpinner();
+        fetchDataFromFirestore();
+
         return rootView;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    private void fetchDataFromFirestore() {
+        db.collection("services").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                originalServiceList.clear();
+
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Service service = document.toObject(Service.class);
+                    originalServiceList.add(service);
+                }
+
+                // Khởi tạo danh sách lọc ban đầu
+                spinnerFilteredServiceList.addAll(originalServiceList);
+                searchFilteredServiceList.addAll(originalServiceList);
+                serviceAdapter.notifyDataSetChanged();
+            } else {
+                // Xử lý lỗi
+            }
+        });
+    }
+
+    private void setupSpinner() {
+        categoryList.add("Tất cả");
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, categoryList);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(spinnerAdapter);
+        db.collection("categories").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String categoryName = document.getString("name");
+                        categoryList.add(categoryName);
+                    }
+                    spinnerAdapter.notifyDataSetChanged();
+                } else {
+
+                }
+            }
+        });
+
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                if (selectedItem.equals("Tất cả")) {
-                    providerAdapter.setFilteredList(providerAdapter.getOriginalList());
-                    providerAdapter.setFinalFilteredList(providerAdapter.getFilteredList());
-                    providerAdapter.notifyDataSetChanged();
-                } else {
-                    List<Provider> newList = new ArrayList<>();
-                    for (Provider provider : providerAdapter.getOriginalList()) {
-                        if (provider.getTilte().toLowerCase().contains(selectedItem.toLowerCase())) {
-                            newList.add(provider);
-                        }
-                    }
-                    providerAdapter.setFilteredList(newList);
-                    providerAdapter.setFinalFilteredList(providerAdapter.getFilteredList());
-                    providerAdapter.notifyDataSetChanged();
-                }
+                String selectedCategory = (String) parent.getItemAtPosition(position);
+                filterDataBySpinner(selectedCategory);
             }
 
             @Override
@@ -97,67 +169,33 @@ public class HomeFragment extends Fragment implements MenuProvider {
         });
     }
 
-    private List<Provider> getListProvider() {
-        List<Provider> list = new ArrayList();
-        list.add(new Provider(R.drawable.img_user, "Gia sư Toán", "700.000đ", "Đã được thuê: 500", "5"));
-        list.add(new Provider(R.drawable.img_user, "Thiết kế nội thất", "900.000đ", "Đã được thuê: 500", "4.5"));
-        list.add(new Provider(R.drawable.img_user, "Gia sư tiếng Anh", "1.700.000đ", "Đã được thuê: 500", "4.7"));
-        list.add(new Provider(R.drawable.img_user, "Thiết kế website", "700.000đ", "Đã được thuê: 500", "4.8"));
-        list.add(new Provider(R.drawable.img_user, "Trang điểm", "500.000đ", "Đã được thuê: 500", "5"));
-
-        list.add(new Provider(R.drawable.img_user, "Thiết kế nội thất", "900.000đ", "Đã được thuê: 500", "4.5"));
-        list.add(new Provider(R.drawable.img_user, "Sửa chữa máy tính", "1.700.000đ", "Đã được thuê: 500", "4.7"));
-        list.add(new Provider(R.drawable.img_user, "Thiết kế website", "700.000đ", "Đã được thuê: 500", "4.8"));
-        list.add(new Provider(R.drawable.img_user, "Trang điểm", "500.000đ", "Đã được thuê: 500", "5"));
-
-        return list;
-    }
-
-    @Override
-    public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-        menuInflater.inflate(R.menu.main_menu, menu);
-    }
-
-    @Override
-    public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-        return false;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.main_menu, menu);
-        SearchManager searchManager = (SearchManager) requireActivity().getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                providerAdapter.getFilter().filter(query);
-                return false;
+    private void filterDataBySpinner(String category) {
+        spinnerFilteredServiceList.clear();
+        if (category.equals("Tất cả")) {
+            spinnerFilteredServiceList.addAll(originalServiceList);
+        } else {
+            for (Service service : originalServiceList) {
+                if (service.getCategoryName().equalsIgnoreCase(category)) {
+                    spinnerFilteredServiceList.add(service);
+                }
             }
+        }
+        searchFilteredServiceList.clear();
+        searchFilteredServiceList.addAll(spinnerFilteredServiceList);
+        serviceAdapter.notifyDataSetChanged();
+    }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                providerAdapter.getFilter().filter(newText);
-                return false;
+    private void filterDataBySearchView(String query) {
+        searchFilteredServiceList.clear();
+        if (query.isEmpty()) {
+            searchFilteredServiceList.addAll(spinnerFilteredServiceList);
+        } else {
+            for (Service service : spinnerFilteredServiceList) {
+                if (service.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                    searchFilteredServiceList.add(service);
+                }
             }
-        });
-        super.onCreateOptionsMenu(menu, inflater);
+        }
+        serviceAdapter.notifyDataSetChanged();
     }
-
-    private void onClickGoToProviderDetail(Provider provider) {
-        Intent intent = new Intent(getContext(), ProviderDetailInfo.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_provider", provider);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-
 }

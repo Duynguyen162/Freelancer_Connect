@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.provider.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +40,6 @@ public class DisplayServiceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        UserServiceAdapter adapter = new UserServiceAdapter(initializeData());
-        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,15 +48,5 @@ public class DisplayServiceFragment extends Fragment {
                 startActivity(intent);
             }
         });
-    }
-
-    private List<Provider> initializeData() {
-        List<Provider> list = new ArrayList<>();
-
-        list.add(new Provider(R.drawable.img_user, "Gia sư Toán", "700.000đ", "Đã được thuê: 500", "5"));
-        list.add(new Provider(R.drawable.img_user, "Thiết kế nội thất", "900.000đ", "Đã được thuê: 500", "4.5"));
-        list.add(new Provider(R.drawable.img_user, "Gia sư tiếng Anh", "1.700.000đ", "Đã được thuê: 500", "4.7"));
-
-        return list;
     }
 }

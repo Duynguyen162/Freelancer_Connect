@@ -8,24 +8,24 @@
     tools:context=".HomeFragment">
 
     <Spinner
-        android:id="@+id/spinner_provider_category"
+        android:id="@+id/spinner_service_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:padding="8dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/custom_spinner"
-        android:dropDownVerticalOffset="52dp"/>
+        android:dropDownVerticalOffset="40dp"/>
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_provider_item"
+        android:id="@+id/recycler_view_service_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:padding="16dp"
-        android:layout_below="@+id/spinner_provider_category"/>
+        android:layout_below="@+id/spinner_service_category"/>
 
 </RelativeLayout>

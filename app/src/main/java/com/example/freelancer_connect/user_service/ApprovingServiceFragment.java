@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.provider.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +36,6 @@ public class ApprovingServiceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        UserServiceAdapter adapter = new UserServiceAdapter(initializeData());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private List<Provider> initializeData() {
-        List<Provider> list = new ArrayList<>();
-
-        list.add(new Provider(R.drawable.img_user, "Gia sư Toán", "700.000đ", "Đã được thuê: 500", "5"));
-
-        return list;
-    }
 }
