@@ -9,13 +9,14 @@ public class User {
     private String role;
     private String phone;
     private String address;
-    private int avatarResId;   // fallback cho ảnh mặc định
+    private int avatarResId;   // fallback cho ảnh mặc định (local resource)
     private String avatarUrl;  // link ảnh từ Firebase
     private List<Permission> permissions; // quyền của user
 
-    // ⚠️ Bắt buộc cho Firebase (constructor rỗng)
+    // ⚠️ Bắt buộc cho Firebase
     public User() {}
 
+    // Constructor đầy đủ (bao gồm avatarUrl)
     public User(String name, String code, String email, String role,
                 String phone, String address, int avatarResId, String avatarUrl) {
         this.name = name;
@@ -25,7 +26,13 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.avatarResId = avatarResId;
-        this.avatarUrl = null; // hoặc để rỗng
+        this.avatarUrl = avatarUrl;
+    }
+
+    // Constructor ngắn gọn (không cần avatarUrl, mặc định null)
+    public User(String name, String code, String email, String role,
+                String phone, String address, int avatarResId) {
+        this(name, code, email, role, phone, address, avatarResId, null);
     }
 
     // Getter & Setter

@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.freelancer_connect.LoginActivity;
 import com.example.freelancer_connect.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,6 +33,7 @@ public class UserFragment extends Fragment {
     private RadioButton rbMale, rbFemale;
     private LinearLayout btnLogOut, btnEdit, btnManageService;
     final Calendar myCalendar = Calendar.getInstance();
+    private FirebaseFirestore db;
 
 
     public UserFragment() {
@@ -103,5 +105,9 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void fetchUserData() {
+
     }
 }
