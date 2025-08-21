@@ -42,7 +42,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (etEmail.getText().toString().contains("hohoangtuan3003@gmail.com")) {
+                    String email = etEmail.getText().toString();
                     Intent intent = new Intent(LoginActivity.this, CustomerActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                 } else {
                     loginUser();

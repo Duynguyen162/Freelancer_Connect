@@ -39,6 +39,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.annotation:annotation:1.9.1")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -50,7 +52,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")             // Realtime Database
-    implementation("com.google.firebase:firebase-firestore-ktx")        // Firestore (dùng ktx mới nhất từ BOM)
+    implementation("com.google.firebase:firebase-firestore")    // Firestore (dùng ktx mới nhất từ BOM)
     implementation("com.google.firebase:firebase-storage")
 
     // Firebase UI (Firestore adapter)

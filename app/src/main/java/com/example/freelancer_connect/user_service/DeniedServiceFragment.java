@@ -46,7 +46,7 @@ public class DeniedServiceFragment extends Fragment {
         myServiceAdapter = new MyServiceAdapter(serviceArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(myServiceAdapter);
-        btnAdd = rootView.findViewById(R.id.approving_service_button_add);
+        btnAdd = rootView.findViewById(R.id.denied_service_button_add);
 
         fetchDataFromFireStore();
 

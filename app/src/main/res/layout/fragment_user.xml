@@ -25,62 +25,11 @@
         android:layout_below="@+id/user_image_view"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="12dp"
         android:text="Nguyễn Văn Mão"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
-
-
-    <LinearLayout
-        android:id="@+id/linear_layout_login_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_user_name"
-        android:padding="4dp">
-
-        <TextView
-            android:id="@+id/text_view_user_login_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên đăng nhập:" />
-
-        <EditText
-            android:id="@+id/edit_text_user_login_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:background="@drawable/edittext_border"
-            android:ems="10"
-            android:inputType="text"
-            android:padding="4dp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linear_layout_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_layout_login_name"
-        android:padding="4dp">
-        <TextView
-            android:id="@+id/text_view_user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CCCD:" />
-
-        <EditText
-            android:id="@+id/edit_text_user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="95dp"
-            android:background="@drawable/edittext_border"
-            android:ems="10"
-            android:inputType="text"
-            android:padding="4dp" />
-    </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/linear_layout_email"
@@ -107,6 +56,28 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linear_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_user_name"
+        android:padding="4dp">
+        <TextView
+            android:id="@+id/text_view_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CCCD:" />
+
+        <EditText
+            android:id="@+id/edit_text_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:background="@drawable/edittext_border"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="4dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear_layout_phone"

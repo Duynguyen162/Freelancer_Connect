@@ -15,7 +15,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/approving_service_button_add"
+        android:id="@+id/denied_service_button_add"
         android:background="@drawable/button_add_service_custom"
         android:layout_width="50dp"
         android:layout_height="50dp"
