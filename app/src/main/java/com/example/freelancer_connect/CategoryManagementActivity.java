@@ -37,13 +37,13 @@ public class CategoryManagementActivity extends AppCompatActivity {
 
         // Tạo mảng dữ liệu
         categoryList = new ArrayList<>();
-        categoryList.add(new Category("Gia sư", R.drawable.ic_logo));
-        categoryList.add(new Category("Thiết kế", R.drawable.ic_logo));
-        categoryList.add(new Category("Làm bánh", R.drawable.ic_logo));
-        categoryList.add(new Category("Sửa chữa", R.drawable.ic_logo));
-        categoryList.add(new Category("Chụp ảnh", R.drawable.ic_logo));
-        categoryList.add(new Category("Làm nail", R.drawable.ic_logo));
-        categoryList.add(new Category("Dịch vụ makeup", R.drawable.ic_logo));
+        categoryList.add(new Category("Gia sư", R.drawable.ic_tutoring));
+        categoryList.add(new Category("Thiết kế", R.drawable.ic_design));
+        categoryList.add(new Category("Làm bánh", R.drawable.ic_cake));
+        categoryList.add(new Category("Sửa chữa", R.drawable.ic_repair));
+        categoryList.add(new Category("Chụp ảnh", R.drawable.ic_camera));
+        categoryList.add(new Category("Làm nail", R.drawable.ic_nail));
+        categoryList.add(new Category("Dịch vụ makeup", R.drawable.ic_makeup));
 
         // Gắn adapter
         adapter = new CategoryAdapter(this, categoryList);

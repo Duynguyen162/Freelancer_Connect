@@ -26,13 +26,12 @@
         android:id="@+id/category_delete_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/ic_logo"
-        android:background="@android:color/transparent" />
+        android:layout_marginRight="5dp"
+        android:background="@drawable/ic_delete" />
 
     <ImageButton
         android:id="@+id/category_edit_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/ic_logo"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/ic_edit" />
 </LinearLayout>

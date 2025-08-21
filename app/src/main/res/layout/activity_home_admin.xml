@@ -32,13 +32,14 @@
                 android:textSize="22sp" />
 
             <ImageView
+                android:id="@+id/admin_profile"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="25dp"
-                android:src="@drawable/ic_logo" />
+                android:src="@drawable/ic_user_admin" />
         </LinearLayout>
 
         <!-- Các block chức năng -->
@@ -68,7 +69,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_account_management" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_notification_management" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -119,7 +120,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_authentication" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -145,16 +146,18 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_list_service" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:padding="5dp"
                     android:layout_gravity="center"
                     android:text="Danh mục các dịch vụ"
                     android:textColor="#222222"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:gravity="center" />
             </LinearLayout>
 
             <!-- Box 5: Thống kê -->
@@ -171,7 +174,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_statistical" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -194,9 +197,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="40dp"
+                    android:layout_width="37dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_logo" />
+                    android:src="@drawable/ic_decentralization" />
 
                 <TextView
                     android:layout_width="wrap_content"

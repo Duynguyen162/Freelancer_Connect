@@ -1,5 +1,7 @@
 package com.example.freelancer_connect.model;
 
+import java.util.List;
+
 public class User {
     private String name;
     private String code;
@@ -7,9 +9,16 @@ public class User {
     private String role;
     private String phone;
     private String address;
-    private int avatarResId;
+    private int avatarResId;   // fallback cho ảnh mặc định (local resource)
+    private String avatarUrl;  // link ảnh từ Firebase
+    private List<Permission> permissions; // quyền của user
 
-    public User(String name, String code, String email, String role, String phone, String address, int avatarResId) {
+    // ⚠️ Bắt buộc cho Firebase
+    public User() {}
+
+    // Constructor đầy đủ (bao gồm avatarUrl)
+    public User(String name, String code, String email, String role,
+                String phone, String address, int avatarResId, String avatarUrl) {
         this.name = name;
         this.code = code;
         this.email = email;
@@ -17,13 +26,40 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.avatarResId = avatarResId;
+        this.avatarUrl = avatarUrl;
     }
 
+    // Constructor ngắn gọn (không cần avatarUrl, mặc định null)
+    public User(String name, String code, String email, String role,
+                String phone, String address, int avatarResId) {
+        this(name, code, email, role, phone, address, avatarResId, null);
+    }
+
+    // Getter & Setter
     public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
     public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
     public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
     public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+
     public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
     public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
     public int getAvatarResId() { return avatarResId; }
+    public void setAvatarResId(int avatarResId) { this.avatarResId = avatarResId; }
+
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
+
+    public List<Permission> getPermissions() { return permissions; }
+    public void setPermissions(List<Permission> permissions) { this.permissions = permissions; }
 }
