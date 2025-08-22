@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class Service implements Serializable {
-    private String ownerId;
+    private String documentId;
     private String title;
     private String description;
     private String price;
@@ -26,8 +26,13 @@ public class Service implements Serializable {
     }
 
     // Getter & Setter
-    public String getOwnerId() { return ownerId; }
-    public void setOwnerId(String ownerId) { this.ownerId = ownerId; }
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }

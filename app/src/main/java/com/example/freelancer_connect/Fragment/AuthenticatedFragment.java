@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
 import com.example.freelancer_connect.adapter.ApprovedServiceAdapter;
-import com.example.freelancer_connect.model.User;
+import com.example.freelancer_connect.model.Service;
 
 import java.util.List;
 
@@ -31,8 +31,9 @@ public class AuthenticatedFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            List<User> userList = (List<User>) bundle.getSerializable("user_list");
-            recyclerView.setAdapter(new ApprovedServiceAdapter(userList)); // đổi adapter
+            // Lấy danh sách Service từ bundle
+            List<Service> serviceList = (List<Service>) bundle.getSerializable("service_list");
+            recyclerView.setAdapter(new ApprovedServiceAdapter(getContext(),serviceList));
         }
 
         return view;
