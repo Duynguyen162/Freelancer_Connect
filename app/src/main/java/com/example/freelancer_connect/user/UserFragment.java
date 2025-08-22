@@ -84,6 +84,13 @@ public class UserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        edtID.setEnabled(false);
+        edtEmail.setEnabled(false);
+        edtPhone.setEnabled(false);
+        edtDOB.setEnabled(false);
+        rbMale.setEnabled(false);
+        rbFemale.setEnabled(false);
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +113,7 @@ public class UserFragment extends Fragment {
             }
         });
 
-        fetchUserByEmail("tu@gmail.com");
+        fetchUserByEmail("tuan@gmail.com");
     }
 
     private void fetchUserByEmail(String email) {
@@ -126,6 +133,11 @@ public class UserFragment extends Fragment {
                         edtEmail.setText(user.getEmail());
                         edtPhone.setText(user.getPhone());
                         edtDOB.setText(user.getBirthday());
+                        if (user.getGender().equals("Nam")) {
+                            rbMale.setChecked(true);
+                        } else {
+                            rbFemale.setChecked(true);
+                        }
                     }
                 }
             }

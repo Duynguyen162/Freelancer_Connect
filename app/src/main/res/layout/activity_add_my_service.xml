@@ -93,6 +93,15 @@
         android:layout_marginEnd="10dp"
         android:background="@drawable/custom_input"/>
 
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_arrow_down"
+        android:layout_below="@+id/add_my_service_description"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"/>
+
 
     <EditText
         android:id="@+id/add_my_service_price"
