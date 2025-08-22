@@ -39,7 +39,7 @@ public class ApprovedServiceFragment extends Fragment {
             serviceList = (List<Service>) getArguments().getSerializable("service_list");
         }
 
-        adapter = new ServiceAdapter(serviceList);
+        adapter = new ServiceAdapter(getContext(), serviceList);
         recyclerView.setAdapter(adapter);
 
         return view;
