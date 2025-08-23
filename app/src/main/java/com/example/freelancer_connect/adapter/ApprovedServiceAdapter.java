@@ -1,62 +1,74 @@
 package com.example.freelancer_connect.adapter;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.model.User;
+import com.example.freelancer_connect.model.Service;
 
 import java.util.List;
 
-public class ApprovedServiceAdapter extends RecyclerView.Adapter<ApprovedServiceAdapter.UserViewHolder> {
+public class ApprovedServiceAdapter extends RecyclerView.Adapter<ApprovedServiceAdapter.ServiceViewHolder> {
 
-    private List<User> userList;
+    private List<Service> serviceList;
+    private Context context;
 
-    public ApprovedServiceAdapter(List<User> userList) {
-        this.userList = userList;
+    public ApprovedServiceAdapter(Context context, List<Service> serviceList) {
+        this.context = context;
+        this.serviceList = serviceList;
     }
 
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Dùng layout riêng cho "Đã xác thực"
-        View view = LayoutInflater.from(parent.getContext())
+    public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_verified_service, parent, false);
-        return new UserViewHolder(view);
+        return new ServiceViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        User user = userList.get(position);
-        holder.imgAvatar.setImageResource(user.getAvatarResId());
-        holder.tvName.setText(user.getName());
+    public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
+        Service service = serviceList.get(position);
+        if (service == null) return;
 
-         //Nếu muốn nút khác, có thể thêm ở đây
-        holder.btnXem.setOnClickListener(v ->
-                System.out.println("Xem chi tiết (Đã xác thực): " + user.getName()));
+        holder.tvTitle.setText(service.getTitle());
+        holder.tvPrice.setText(service.getPrice());
+
+        // Load ảnh portfolio nếu có
+        if (service.getPortfolioImage() != null && !service.getPortfolioImage().isEmpty()) {
+            int drawableId = context.getResources().getIdentifier(
+                    service.getPortfolioImage(), "drawable", context.getPackageName());
+            Glide.with(context)
+                    .load(drawableId > 0 ? drawableId : R.drawable.ic_avatar_default)
+                    .placeholder(R.drawable.ic_avatar_default)
+                    .into(holder.imgAvatar);
+        } else {
+            holder.imgAvatar.setImageResource(R.drawable.ic_avatar_default);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return serviceList != null ? serviceList.size() : 0;
     }
 
-    static class UserViewHolder extends RecyclerView.ViewHolder {
+    static class ServiceViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvPrice;
         ImageView imgAvatar;
-        TextView tvName, tvEmail;
-        Button btnXem;
 
-        public UserViewHolder(@NonNull View itemView) {
+        public ServiceViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvTitle = itemView.findViewById(R.id.tv_service_name);
+            tvPrice = itemView.findViewById(R.id.tv_service_price);
             imgAvatar = itemView.findViewById(R.id.img_avatar);
-            tvName = itemView.findViewById(R.id.tv_service_name);
-            btnXem = itemView.findViewById(R.id.btn_xem);
         }
     }
 }

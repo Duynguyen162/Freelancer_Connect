@@ -1,4 +1,5 @@
 package com.example.freelancer_connect.Fragment;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer_connect.R;
-import com.example.freelancer_connect.adapter.AuthenticatedServiceAdapter;
-import com.example.freelancer_connect.model.User;
+import com.example.freelancer_connect.adapter.ServiceAdapter;
+import com.example.freelancer_connect.model.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApprovedServiceFragment extends Fragment {
+
     private RecyclerView recyclerView;
+    private ServiceAdapter adapter;
+    private List<Service> serviceList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -29,11 +34,13 @@ public class ApprovedServiceFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_service_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            List<User> userList = (List<User>) bundle.getSerializable("user_list");
-            recyclerView.setAdapter(new AuthenticatedServiceAdapter(userList));
+        // Lấy dữ liệu từ arguments
+        if (getArguments() != null) {
+            serviceList = (List<Service>) getArguments().getSerializable("service_list");
         }
+
+        adapter = new ServiceAdapter(getContext(), serviceList);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }

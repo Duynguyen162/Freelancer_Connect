@@ -55,6 +55,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")    // Firestore (dùng ktx mới nhất từ BOM)
     implementation("com.google.firebase:firebase-storage")
 
+    implementation("com.google.android.gms:play-services-base:18.5.0")
+
     // Firebase UI (Firestore adapter)
     implementation("com.firebaseui:firebase-ui-firestore:9.0.0")
 
