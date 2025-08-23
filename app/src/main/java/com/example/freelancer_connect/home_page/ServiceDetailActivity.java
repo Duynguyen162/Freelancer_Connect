@@ -1,12 +1,14 @@
 package com.example.freelancer_connect.home_page;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -59,5 +61,30 @@ public class ServiceDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnGetContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = createInfoDialog();
+                alertDialog.show();
+            }
+        });
     }
+
+    AlertDialog createInfoDialog() {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.service_contact_info_dialog, null);
+
+        TextView txtPhone = dialogLayout.findViewById(R.id.service_contact_info_phone);
+        txtPhone.setText("123456789");
+
+        TextView txtEmail = dialogLayout.findViewById(R.id.service_contact_info_email);
+        txtEmail.setText("freelancerconnect@gmail.com");
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogLayout);
+
+        return builder.create();
+    }
+
 }

@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="Gia sư tiếng Anh"
+            android:textStyle="bold"
             android:layout_toEndOf="@+id/my_service_image"
             android:layout_marginStart="15dp"/>
 
@@ -39,14 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/my_service_title"
-            android:layout_marginStart="50dp"
-            android:gravity="center">
+            android:gravity="right"
+            android:layout_alignParentEnd="true">
 
             <TextView
                 android:id="@+id/my_service_star_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginEnd="4dp"
                 android:text="0.0"/>
 
