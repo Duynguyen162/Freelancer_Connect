@@ -19,9 +19,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MyServiceViewHolder> {
     private List<Service> serviceList;
+    private OnServiceDeleteListener deleteListener;
+    private OnServiceUpdateListener updateListener;
 
-    public MyServiceAdapter(List<Service> serviceList) {
+    public MyServiceAdapter(List<Service> serviceList, OnServiceDeleteListener deleteListener, OnServiceUpdateListener updateListener) {
         this.serviceList = serviceList;
+        this.deleteListener = deleteListener;
+        this.updateListener = updateListener;
     }
 
     @NonNull
@@ -39,6 +43,24 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MySe
         holder.serviceTitle.setText(service.getTitle());
         holder.servicePrice.setText(service.getPrice());
         holder.serviceRate.setText(service.getAverageRating());
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Service serviceToDelete = serviceList.get(position);
+                if (deleteListener != null) {
+                    deleteListener.onServiceDelete(serviceToDelete.getId(), position);
+                }
+            }
+        });
+
+        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Service serviceToUpdate = serviceList.get(position);
+                updateListener.onServiceUpdate(serviceToUpdate.getId(), position);
+            }
+        });
     }
 
     @Override
@@ -59,6 +81,8 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MySe
             serviceTitle = itemView.findViewById(R.id.my_service_title);
             servicePrice = itemView.findViewById(R.id.my_service_price);
             serviceRate = itemView.findViewById(R.id.my_service_star_text);
+            btnDelete = itemView.findViewById(R.id.my_service_button_delete);
+            btnUpdate = itemView.findViewById(R.id.my_service_button_update);
         }
     }
 }

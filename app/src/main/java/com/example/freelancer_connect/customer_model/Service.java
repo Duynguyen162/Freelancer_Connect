@@ -3,6 +3,7 @@ package com.example.freelancer_connect.customer_model;
 import java.io.Serializable;
 
 public class Service implements Serializable {
+    String id;
     private String portfolioImage;
     private String title;
     private String price;
@@ -26,6 +27,14 @@ public class Service implements Serializable {
         this.description = description;
         this.serviceArea = serviceArea;
         this.operatingTime = operatingTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPortfolioImage() {

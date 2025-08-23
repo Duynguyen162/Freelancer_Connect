@@ -1,6 +1,7 @@
 package com.example.freelancer_connect.user;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,6 +85,11 @@ public class UserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if (getArguments() != null) {
+            String userEmail = getArguments().getString("user_email");
+            fetchUserByEmail(userEmail);
+        }
+
         edtID.setEnabled(false);
         edtEmail.setEnabled(false);
         edtPhone.setEnabled(false);
@@ -101,7 +107,11 @@ public class UserFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userEmail = edtEmail.getText().toString();
                 Intent intent = new Intent(getActivity(), EditUserActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("user_email", userEmail);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -112,8 +122,6 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        fetchUserByEmail("tuan@gmail.com");
     }
 
     private void fetchUserByEmail(String email) {

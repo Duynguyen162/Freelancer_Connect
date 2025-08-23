@@ -1,5 +1,6 @@
 package com.example.freelancer_connect.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +10,14 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.freelancer_connect.R;
+import com.example.freelancer_connect.customer_model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,9 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EditUserActivity extends AppCompatActivity {
-    private EditText edtName, edtCCCD, edtEmail, edtPhone, edtDOB;
+    private EditText edtName, edtCCCD , edtPhone, edtDOB;
     private RadioButton rbMale, rbFemale;
     private Button btnUpdate, btnCancel;
+    private String emailToEdit;
     FirebaseFirestore db;
 
     @Override
@@ -41,6 +45,11 @@ public class EditUserActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            emailToEdit = bundle.getString("user_email");
+        }
 
         edtName = findViewById(R.id.edit_user_edt_name);
         edtCCCD = findViewById(R.id.edit_user_edt_cccd);
@@ -65,13 +74,41 @@ public class EditUserActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailToFind = "tu@gmail.com";
-                updateUser(emailToFind);
+                updateUser();
+                finish();
+            }
+        });
+
+        fetchUserByEmail();
+    }
+
+    private void fetchUserByEmail() {
+        db.collection("users").whereEqualTo("email", emailToEdit).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    User user = new User();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        user = document.toObject(User.class);
+                    }
+                    edtName.setText(user.getName());
+                    edtCCCD.setText(user.getCccd());
+                    edtPhone.setText(user.getPhone());
+                    edtDOB.setText(user.getBirthday());
+                    if (user.getGender().equalsIgnoreCase("Nam")) {
+                        rbMale.setChecked(true);
+                    } else {
+                        rbFemale.setChecked(true);
+                    }
+                } else {
+                    Toast.makeText(EditUserActivity.this, "Không tìm thấy người dùng", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void updateUser(String emailToFind) {
+    private void updateUser() {
+        String emailToFind = emailToEdit;
         if (emailToFind.isEmpty()) {
             return;
         }

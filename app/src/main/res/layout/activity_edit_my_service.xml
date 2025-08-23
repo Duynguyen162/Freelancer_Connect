@@ -138,7 +138,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/edit_my_service_button_add"
+            android:id="@+id/edit_my_service_button_update"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"

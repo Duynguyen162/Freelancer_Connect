@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.freelancer_connect.R;
 import com.example.freelancer_connect.customer_model.Service;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,6 +38,7 @@ public class DisplayServiceFragment extends Fragment {
     private MyServiceAdapter myServiceAdapter;
     private ArrayList<Service> serviceArrayList;
     private Button btnAdd;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public DisplayServiceFragment() {
         // Required empty public constructor
@@ -45,7 +51,17 @@ public class DisplayServiceFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_display_service, container, false);
         recyclerView = rootView.findViewById(R.id.display_service_recycler_view);
         serviceArrayList = new ArrayList<>();
-        myServiceAdapter = new MyServiceAdapter(serviceArrayList);
+        myServiceAdapter = new MyServiceAdapter(serviceArrayList, new OnServiceDeleteListener() {
+            @Override
+            public void onServiceDelete(String id, int position) {
+                deleteService(id, position);
+            }
+        }, new OnServiceUpdateListener() {
+            @Override
+            public void onServiceUpdate(String id, int position) {
+                updateService(id, position);
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(myServiceAdapter);
         btnAdd = rootView.findViewById(R.id.display_service_button_add);
@@ -68,7 +84,6 @@ public class DisplayServiceFragment extends Fragment {
     }
 
     public void fetchDataFromFireStore() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference serviceRef = db.collection("services");
         Query query = serviceRef.whereEqualTo("status", "Đã được duyệt");
 
@@ -78,6 +93,7 @@ public class DisplayServiceFragment extends Fragment {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Service service = document.toObject(Service.class);
+                        service.setId(document.getId());
                         serviceArrayList.add(service);
                     }
                     myServiceAdapter.notifyDataSetChanged();
@@ -86,5 +102,47 @@ public class DisplayServiceFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void deleteService(String id, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View customLayout = inflater.inflate(R.layout.layout_delete_confirm_dialog, null);
+        builder.setView(customLayout);
+        final AlertDialog dialog = builder.create();
+        Button btnConfirm =  customLayout.findViewById(R.id.button_confirm_delete);
+        Button btnCancel =  customLayout.findViewById(R.id.button_cancel_delete);
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                db.collection("services").document(id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        serviceArrayList.remove(position);
+                        myServiceAdapter.notifyDataSetChanged();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "Lỗi khi xóa: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void updateService(String id, int positon) {
+        Intent intent = new Intent(requireContext(), EditMyServiceActivity.class);
+        intent.putExtra("service_id", id);
+        intent.putExtra("service_position", positon);
+        startActivity(intent);
     }
 }

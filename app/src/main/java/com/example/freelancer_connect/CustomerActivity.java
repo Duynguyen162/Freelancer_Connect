@@ -1,5 +1,6 @@
 package com.example.freelancer_connect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.freelancer_connect.customer_model.User;
 import com.example.freelancer_connect.databinding.ActivityCustomerBinding;
 import com.example.freelancer_connect.home_page.HomeFragment;
 import com.example.freelancer_connect.notify.NotifyFragment;
@@ -25,6 +27,10 @@ public class CustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        Intent intent = getIntent();
+        String userEmail = intent.getStringExtra("userEmail");
+
         binding = ActivityCustomerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         changeFragment(new HomeFragment());
@@ -36,7 +42,11 @@ public class CustomerActivity extends AppCompatActivity {
             } else if (id == R.id.action_notify) {
                 changeFragment(new NotifyFragment());
             } else if (id == R.id.action_user) {
-                changeFragment(new UserFragment());
+                UserFragment userFragment = new UserFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("user_email", userEmail);
+                userFragment.setArguments(bundle);
+                changeFragment(userFragment);
             }
             return true;
         });
