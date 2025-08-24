@@ -118,8 +118,7 @@ public class UserFragment extends Fragment {
         btnManageService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ManageServiceActivity.class);
-                startActivity(intent);
+                sendUserEmailToManageServiceActivity();
             }
         });
     }
@@ -150,5 +149,14 @@ public class UserFragment extends Fragment {
                 }
             }
         });
+    }
+    
+    public void sendUserEmailToManageServiceActivity() {
+         Intent intent = new Intent(getActivity(), ManageServiceActivity.class);
+         Bundle bundle = new Bundle();
+         bundle.putString("user_phone", edtPhone.getText().toString());
+         bundle.putString("user_email", edtEmail.getText().toString());
+         intent.putExtras(bundle);
+         startActivity(intent);
     }
 }

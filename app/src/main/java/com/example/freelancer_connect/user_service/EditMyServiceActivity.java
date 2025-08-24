@@ -153,6 +153,7 @@ public class EditMyServiceActivity extends AppCompatActivity {
                 }
             }
         });
+        finish();
     }
 
 }

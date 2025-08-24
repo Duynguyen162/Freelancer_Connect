@@ -72,14 +72,22 @@ public class ServiceDetailActivity extends AppCompatActivity {
     }
 
     AlertDialog createInfoDialog() {
+        Bundle bundle = getIntent().getExtras();
+        Service service = new Service();
+        if (bundle != null) {
+            service = (Service) bundle.get("object_service");
+            service.setPhone(service.getPhone());
+            service.setEmail(service.getEmail());
+        }
+
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.service_contact_info_dialog, null);
 
         TextView txtPhone = dialogLayout.findViewById(R.id.service_contact_info_phone);
-        txtPhone.setText("123456789");
+        txtPhone.setText(service.getPhone());
 
         TextView txtEmail = dialogLayout.findViewById(R.id.service_contact_info_email);
-        txtEmail.setText("freelancerconnect@gmail.com");
+        txtEmail.setText(service.getEmail());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogLayout);

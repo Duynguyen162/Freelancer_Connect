@@ -1,5 +1,6 @@
 package com.example.freelancer_connect.user_service;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -38,6 +39,7 @@ public class AddMyServiceActivity extends AppCompatActivity {
     ArrayList<String> listCategory = new ArrayList<>();
     ArrayAdapter<String> categoryAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String userPhone, userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,10 @@ public class AddMyServiceActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent intent = getIntent();
+        userPhone = intent.getStringExtra("user_phone");
+        userEmail = intent.getStringExtra("user_email");
 
         edtTitle = findViewById(R.id.add_my_service_name);
         edtDescription = findViewById(R.id.add_my_service_description);
@@ -85,7 +91,6 @@ public class AddMyServiceActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        // Lấy field "name" từ mỗi document
                         String categoryName = document.getString("name");
                         if (categoryName != null) {
                             listCategory.add(categoryName);
@@ -120,6 +125,8 @@ public class AddMyServiceActivity extends AppCompatActivity {
         service.put("price", price);
         service.put("operatingTime", time);
         service.put("status", status);
+        service.put("phone", userPhone);
+        service.put("email", userEmail);
 
         db.collection("services").add(service).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override

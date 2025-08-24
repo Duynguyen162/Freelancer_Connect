@@ -13,11 +13,14 @@ public class Service implements Serializable {
     private String description;
     private String serviceArea;
     private String operatingTime;
+    private String phone;
+    private String email;
 
     public Service() {
     }
 
-    public Service(String portfolioImage, String title, String price, String averageRating, String reviewCount, String categoryName, String description, String serviceArea, String operatingTime) {
+    public Service(String id, String portfolioImage, String title, String price, String averageRating, String reviewCount, String categoryName, String description, String serviceArea, String operatingTime, String phone, String email) {
+        this.id = id;
         this.portfolioImage = portfolioImage;
         this.title = title;
         this.price = price;
@@ -27,6 +30,8 @@ public class Service implements Serializable {
         this.description = description;
         this.serviceArea = serviceArea;
         this.operatingTime = operatingTime;
+        this.phone = phone;
+        this.email = email;
     }
 
     public String getId() {
@@ -107,5 +112,21 @@ public class Service implements Serializable {
 
     public void setOperatingTime(String operatingTime) {
         this.operatingTime = operatingTime;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

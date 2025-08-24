@@ -46,6 +46,21 @@
         android:id="@+id/manage_service_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/manage_service_tab_layout"/>
+        android:layout_below="@id/manage_service_tab_layout">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <Button
+        android:id="@+id/manage_service_button_add"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="+"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_add_service_custom"/>
 
 </RelativeLayout>

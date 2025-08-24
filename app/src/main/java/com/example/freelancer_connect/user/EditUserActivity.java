@@ -1,5 +1,6 @@
 package com.example.freelancer_connect.user;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class EditUserActivity extends AppCompatActivity {
@@ -63,6 +66,14 @@ public class EditUserActivity extends AppCompatActivity {
 
         btnCancel = findViewById(R.id.edit_user_button_cancel);
         btnUpdate = findViewById(R.id.edit_user_button_update);
+
+
+        edtDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +154,13 @@ public class EditUserActivity extends AppCompatActivity {
                                 updates.put("cccd", cccd);
                                 updates.put("phone", phone);
                                 updates.put("birthday", birthDay);
+                                String gender = "";
+                                if (rbFemale.isChecked()) {
+                                    gender = "Nữ";
+                                } else if (rbMale.isChecked()) {
+                                    gender = "Nam";
+                                }
+                                updates.put("gender", gender);
 
                                 docRef.update(updates)
                                         .addOnSuccessListener(aVoid -> {
@@ -163,4 +181,25 @@ public class EditUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void showDatePickerDialog() {
+        // Lấy ngày, tháng, năm hiện tại để khởi tạo DatePickerDialog
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Tạo DatePickerDialog
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (view, year1, monthOfYear, dayOfMonth) -> {
+                    // Xử lý khi người dùng chọn ngày
+                    String selectedDate = String.format(Locale.getDefault(), "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1);
+                    edtDOB.setText(selectedDate);
+                },
+                year, month, day);
+
+        // Hiển thị DatePickerDialog
+        datePickerDialog.show();
+    }
+
 }
