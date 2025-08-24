@@ -183,22 +183,18 @@ public class EditUserActivity extends AppCompatActivity {
     }
 
     private void showDatePickerDialog() {
-        // Lấy ngày, tháng, năm hiện tại để khởi tạo DatePickerDialog
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Tạo DatePickerDialog
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year1, monthOfYear, dayOfMonth) -> {
-                    // Xử lý khi người dùng chọn ngày
                     String selectedDate = String.format(Locale.getDefault(), "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1);
                     edtDOB.setText(selectedDate);
                 },
                 year, month, day);
 
-        // Hiển thị DatePickerDialog
         datePickerDialog.show();
     }
 

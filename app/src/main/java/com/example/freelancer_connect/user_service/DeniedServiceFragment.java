@@ -126,6 +126,7 @@ public class DeniedServiceFragment extends Fragment {
                         Toast.makeText(getContext(), "Lỗi khi xóa: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+                Toast.makeText(getContext(), "Xóa dịch vụ thành công ", Toast.LENGTH_SHORT).show();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {

@@ -127,6 +127,7 @@ public class AddMyServiceActivity extends AppCompatActivity {
         service.put("status", status);
         service.put("phone", userPhone);
         service.put("email", userEmail);
+        service.put("numContact", "Đã được liên hệ: 0");
 
         db.collection("services").add(service).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
