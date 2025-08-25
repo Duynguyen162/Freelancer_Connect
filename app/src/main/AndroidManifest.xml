@@ -43,11 +43,11 @@
             android:theme="@style/Theme.YourApp.NoActionBar" />
         <activity
             android:name=".user.EditUserActivity"
-            android:exported="false" /> <!-- Activity từ nhánh main -->
-        <activity
-            android:name=".provider.ProviderDetailInfo"
-            android:exported="false"
-            android:theme="@style/Theme.YourApp.NoActionBar" />
+            android:exported="false" /> 
+<!--        <activity-->
+<!--            android:name=".provider.ProviderDetailInfo"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/Theme.YourApp.NoActionBar" />-->
         <activity
             android:name=".NotificationManagementActivity"
             android:exported="false"
@@ -64,7 +64,8 @@
             android:exported="false" />
         <activity
             android:name=".AccountManagementActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.YourApp.NoActionBar"/>
         <activity
             android:name=".ProfileCustomActivity"
             android:exported="false" />
