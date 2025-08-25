@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/fragment_statistics_by_group"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F8F8F8">
+
+    <TableLayout
+        android:id="@+id/table_service_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/table_border"
+        android:padding="0dp">
+
+        <!-- Header -->
+        <TableRow
+            android:id="@+id/row_header"
+            android:background="@drawable/table_row_border">
+
+            <TextView
+                android:id="@+id/text_header_service"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="Dịch vụ"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+
+            <TextView
+                android:id="@+id/text_header_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Lượt thuê"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+
+            <TextView
+                android:id="@+id/text_header_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Tỷ lệ"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+
+        <!-- Dòng dịch vụ 1 -->
+        <TableRow android:id="@+id/row_service_1" android:background="@drawable/table_row_border">
+            <TextView
+                android:id="@+id/text_service_1_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="Gia sư tiếng anh"
+                android:textSize="16sp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="12dp"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_1_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="120"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_1_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="35%"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+
+        <!-- Dòng dịch vụ 2 -->
+        <TableRow android:id="@+id/row_service_2" android:background="@drawable/table_row_border">
+            <TextView
+                android:id="@+id/text_service_2_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="Sửa điều hòa"
+                android:textSize="16sp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="12dp"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_2_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="75"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_2_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="22%"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+
+        <!-- Dòng dịch vụ 3 -->
+        <TableRow android:id="@+id/row_service_3" android:background="@drawable/table_row_border">
+            <TextView
+                android:id="@+id/text_service_3_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="Lắp wifi"
+                android:textSize="16sp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="12dp"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_3_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="50"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_3_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="15%"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+
+        <!-- Dòng dịch vụ 4 -->
+        <TableRow android:id="@+id/row_service_4" android:background="@drawable/table_row_border">
+            <TextView
+                android:id="@+id/text_service_4_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="sửa xe"
+                android:textSize="16sp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="12dp"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_4_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="45"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_4_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="13%"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+
+        <!-- Dòng dịch vụ 5 -->
+        <TableRow android:id="@+id/row_service_5" android:background="@drawable/table_row_border">
+            <TextView
+                android:id="@+id/text_service_5_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:text="Làm bánh"
+                android:textSize="16sp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="12dp"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_5_rent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="30"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+            <TextView
+                android:id="@+id/text_service_5_rate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="10%"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#222222" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
