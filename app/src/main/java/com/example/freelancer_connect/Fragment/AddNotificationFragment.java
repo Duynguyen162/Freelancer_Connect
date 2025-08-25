@@ -31,13 +31,11 @@ public class AddNotificationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_notification, container, false);
 
-        Spinner spinnerNguoiDung = view.findViewById(R.id.spinner_nguoi_dung);
         EditText edtTieuDe = view.findViewById(R.id.edt_tieu_de);
         EditText edtNoiDung = view.findViewById(R.id.edt_noi_dung);
         Button btnGui = view.findViewById(R.id.btn_gui_thong_bao);
 
         btnGui.setOnClickListener(v -> {
-            String receiver = spinnerNguoiDung.getSelectedItem().toString();
             String title = edtTieuDe.getText().toString().trim();
             String content = edtNoiDung.getText().toString().trim();
 
@@ -45,12 +43,6 @@ public class AddNotificationFragment extends Fragment {
                 Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            // Tạo đối tượng Notification
-            Notification n = new Notification(title, content, receiver);
-
-            // Add vào list chung
-            NotificationRepository.addNotification(n);
 
             Toast.makeText(getContext(), "Đã thêm thông báo", Toast.LENGTH_SHORT).show();
 
