@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,14 +14,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.freelancer_connect.R;
 import com.example.freelancer_connect.model.Notification;
-import com.example.freelancer_connect.model.NotificationRepository;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddNotificationFragment extends Fragment {
 
-    public static NotificationRepository NotificationRepository;
+    private FirebaseFirestore db;
 
     @Nullable
     @Override
@@ -31,13 +31,13 @@ public class AddNotificationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_notification, container, false);
 
-        Spinner spinnerNguoiDung = view.findViewById(R.id.spinner_nguoi_dung);
         EditText edtTieuDe = view.findViewById(R.id.edt_tieu_de);
         EditText edtNoiDung = view.findViewById(R.id.edt_noi_dung);
         Button btnGui = view.findViewById(R.id.btn_gui_thong_bao);
 
+        db = FirebaseFirestore.getInstance();
+
         btnGui.setOnClickListener(v -> {
-            String receiver = spinnerNguoiDung.getSelectedItem().toString();
             String title = edtTieuDe.getText().toString().trim();
             String content = edtNoiDung.getText().toString().trim();
 
@@ -46,17 +46,28 @@ public class AddNotificationFragment extends Fragment {
                 return;
             }
 
-            // Tạo đối tượng Notification
-            Notification n = new Notification(title, content, receiver);
+            // Tạo map để lưu lên Firestore
+            Map<String, Object> notificationMap = new HashMap<>();
+            notificationMap.put("title", title);
+            notificationMap.put("content", content);
+            notificationMap.put("timestamp", Timestamp.now());
 
-            // Add vào list chung
-            NotificationRepository.addNotification(n);
+            // Thêm vào collection "notifications"
+            db.collection("notifications")
+                    .add(notificationMap)
+                    .addOnSuccessListener(documentReference -> {
+                        // Sau khi thêm xong, cập nhật documentId
+                        documentReference.update("documentId", documentReference.getId());
 
-            Toast.makeText(getContext(), "Đã thêm thông báo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Đã thêm thông báo", Toast.LENGTH_SHORT).show();
 
-            // Clear input
-            edtTieuDe.setText("");
-            edtNoiDung.setText("");
+                        // Clear input
+                        edtTieuDe.setText("");
+                        edtNoiDung.setText("");
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getContext(), "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         });
 
         return view;

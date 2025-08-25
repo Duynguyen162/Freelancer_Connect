@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_chart"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Tiêu đề biểu đồ người dùng -->
+        <TextView
+            android:id="@+id/text_user_chart_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biểu đồ người dùng theo thời gian"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#222222"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Ảnh biểu đồ đường -->
+        <ImageView
+            android:id="@+id/image_user_line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sample_line_chart"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Tiêu đề biểu đồ dịch vụ -->
+        <TextView
+            android:id="@+id/text_service_pie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tỷ lệ sử dụng dịch vụ"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#222222"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Ảnh biểu đồ tròn -->
+        <ImageView
+            android:id="@+id/image_service_pie_chart"
+            android:layout_width="280dp"
+            android:layout_height="210dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sample_pie_chart"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Legend -->
+        <LinearLayout
+            android:id="@+id/layout_pie_legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- 1 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/view_legend_gia_su"
+                    android:layout_width="24dp"
+                    android:layout_height="8dp"
+                    android:background="#3A93F6"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:id="@+id/text_legend_gia_su"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gia sư tiếng anh"
+                    android:textColor="#222222"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!-- 2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/view_legend_sua_dieu_hoa"
+                    android:layout_width="24dp"
+                    android:layout_height="8dp"
+                    android:background="#46BF93"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:id="@+id/text_legend_sua_dieu_hoa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sửa điều hòa"
+                    android:textColor="#222222"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!-- 3 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/view_legend_lap_wifi"
+                    android:layout_width="24dp"
+                    android:layout_height="8dp"
+                    android:background="#FFA829"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:id="@+id/text_legend_lap_wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lắp wifi"
+                    android:textColor="#222222"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!-- 4 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/view_legend_sua_xe"
+                    android:layout_width="24dp"
+                    android:layout_height="8dp"
+                    android:background="#FF7341"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:id="@+id/text_legend_sua_xe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sửa xe tại nhà"
+                    android:textColor="#222222"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!-- 5 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/view_legend_lam_banh"
+                    android:layout_width="24dp"
+                    android:layout_height="8dp"
+                    android:background="#C871EB"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:id="@+id/text_legend_lam_banh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Làm bánh"
+                    android:textColor="#222222"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
