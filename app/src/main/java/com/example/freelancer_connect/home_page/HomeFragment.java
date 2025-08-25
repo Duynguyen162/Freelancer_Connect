@@ -29,6 +29,7 @@ import com.example.freelancer_connect.customer_model.Service;
 import com.example.freelancer_connect.user_service.AddMyServiceActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -116,7 +117,10 @@ public class HomeFragment extends Fragment  {
     }
 
     private void fetchDataFromFirestore() {
-        db.collection("services").get().addOnCompleteListener(task -> {
+        CollectionReference servicesRef = db.collection("services");
+        servicesRef.whereEqualTo("status", "Đã được duyệt")
+                .get()
+                .addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 originalServiceList.clear();
 
@@ -125,12 +129,11 @@ public class HomeFragment extends Fragment  {
                     originalServiceList.add(service);
                 }
 
-                // Khởi tạo danh sách lọc ban đầu
                 spinnerFilteredServiceList.addAll(originalServiceList);
                 searchFilteredServiceList.addAll(originalServiceList);
                 serviceAdapter.notifyDataSetChanged();
             } else {
-                // Xử lý lỗi
+
             }
         });
     }

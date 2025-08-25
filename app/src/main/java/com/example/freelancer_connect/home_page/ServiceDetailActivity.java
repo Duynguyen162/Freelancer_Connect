@@ -20,7 +20,8 @@ import com.example.freelancer_connect.customer_model.Service;
 public class ServiceDetailActivity extends AppCompatActivity {
     private ImageView btnBack;
     private Button btnGetContact;
-    private TextView serviceName, serviceDescription, serviceCategory, serviceArea, servicePrice, serviceTime;
+    private TextView serviceName, serviceDescription, serviceCategory, serviceArea, servicePrice, serviceTime, serviceNumContact,
+    serviceAverageStar, serviceReviewCount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,9 @@ public class ServiceDetailActivity extends AppCompatActivity {
         serviceArea = findViewById(R.id.service_area_text);
         servicePrice = findViewById(R.id.service_price_text);
         serviceTime = findViewById(R.id.service_time_text);
+        serviceAverageStar = findViewById(R.id.service_average_rate);
+        serviceNumContact = findViewById(R.id.service_num_contact);
+        serviceReviewCount = findViewById(R.id.service_review_count);
 
         btnBack = findViewById(R.id.service_detail_button_back);
         btnGetContact = findViewById(R.id.button_get_service_contact);
@@ -54,6 +58,9 @@ public class ServiceDetailActivity extends AppCompatActivity {
         serviceArea.setText(service.getServiceArea());
         servicePrice.setText(service.getPrice());
         serviceTime.setText(service.getOperatingTime());
+        serviceAverageStar.setText(service.getAverageRating());
+        serviceNumContact.setText("Đã liên lạc: " + service.getNumContact());
+        serviceReviewCount.setText(service.getReviewCount() + " người đánh giá");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,14 +79,22 @@ public class ServiceDetailActivity extends AppCompatActivity {
     }
 
     AlertDialog createInfoDialog() {
+        Bundle bundle = getIntent().getExtras();
+        Service service = new Service();
+        if (bundle != null) {
+            service = (Service) bundle.get("object_service");
+            service.setPhone(service.getPhone());
+            service.setEmail(service.getEmail());
+        }
+
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.service_contact_info_dialog, null);
 
         TextView txtPhone = dialogLayout.findViewById(R.id.service_contact_info_phone);
-        txtPhone.setText("123456789");
+        txtPhone.setText(service.getPhone());
 
         TextView txtEmail = dialogLayout.findViewById(R.id.service_contact_info_email);
-        txtEmail.setText("freelancerconnect@gmail.com");
+        txtEmail.setText(service.getEmail());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogLayout);

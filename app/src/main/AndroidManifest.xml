@@ -66,6 +66,7 @@
             android:name=".ProfileCustomActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.YourApp.NoActionBar"
             android:name=".user_service.EditMyServiceActivity"
             android:exported="false" />
         <activity

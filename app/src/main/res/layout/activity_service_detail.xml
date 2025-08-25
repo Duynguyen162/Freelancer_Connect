@@ -295,4 +295,44 @@
         android:text="Lấy thông tin liên hệ"
         android:textColor="@color/white"
         app:cornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/service_num_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã có 102 người liên hệ"
+        android:textSize="14sp"
+        android:layout_below="@+id/button_get_service_contact"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/service_num_contact"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp">
+
+        <TextView
+            android:id="@+id/service_average_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_star"
+            android:layout_marginStart="4dp"/>
+
+        <TextView
+            android:id="@+id/service_review_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 người đánh giá"
+            android:layout_marginStart="20dp"/>
+
+    </LinearLayout>
 </RelativeLayout>

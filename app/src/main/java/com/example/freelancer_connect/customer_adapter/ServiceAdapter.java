@@ -42,7 +42,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         holder.serviceImg.setImageResource(R.drawable.img_user);
         holder.serviceTitle.setText(service.getTitle());
         holder.servicePrice.setText(service.getPrice());
-        holder.serviceNumContact.setText(service.getReviewCount());
+        holder.serviceNumContact.setText("Đã liên lạc: " + service.getNumContact());
         holder.serviceRate.setText(service.getAverageRating());
         holder.serviceLayout.setOnClickListener(new View.OnClickListener() {
             @Override
