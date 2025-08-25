@@ -56,6 +56,7 @@ public class EditUserActivity extends AppCompatActivity {
 
         edtName = findViewById(R.id.edit_user_edt_name);
         edtCCCD = findViewById(R.id.edit_user_edt_cccd);
+        edtCCCD.setEnabled(false);
         edtPhone = findViewById(R.id.edit_user_edt_phone);
         edtDOB = findViewById(R.id.edit_user_edt_dob);
         rbMale = findViewById(R.id.edit_user_rb_male);
